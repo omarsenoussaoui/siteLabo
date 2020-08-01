@@ -1,4 +1,9 @@
 <?php session_start();
+
+ $conn = mysqli_connect("localhost", "root", "");
+ $db = mysqli_select_db($conn, "labo");
+
+
 if (!isset($_SESSION['nom_patient'])) {
    header("location:login-patient.php");
  } ?>
@@ -112,17 +117,39 @@ if (!isset($_SESSION['nom_patient'])) {
      ?>
      <?php 
 if(isset($_POST['modifier'])) {
-  echo "<center><div class='alert alert-danger' role='alert'>".$_POST['nom']." </div>
-  <div class='alert alert-danger' role='alert'>".$_POST['prenom']." </div>
-  <div class='alert alert-danger' role='alert'>".$_POST['email']." </div>
-  </center>";
+  $id_patient = $_POST['id_patient'];
+  $nom_patient = $_POST['nom'];
+  $prenom_patient = $_POST['prenom'];
+  $email_patient = $_POST['email'];
+  $mot_passe = $_POST['mot_passe'];
+  $num_tlp=$_POST['tlp'];
+
+ 
+ $q="UPDATE patient SET nom_patient= '$nom_patient',prenom_patient='$prenom_patient',email = '$email_patient', mot_passePa = '$mot_passe', num_tlp='$num_tlp' WHERE id_patient='$id_patient' ";
+if (mysqli_query($conn,$q)) 
+{
+  echo "<div class='alert alert-success' role='alert'>Modification avec succès</div>";
+  $_SESSION['id']=$id_patient;
+  $_SESSION['nom_patient']=$nom_patient;
+  $_SESSION['prenom_patient']=$prenom_patient;
+  $_SESSION['email_patient']=$email_patient;
+  $_SESSION['mot_passe']=$mot_passe;
+  $_SESSION['num_tlp']=$num_tlp;
+ header("Refresh:3");
+ 
+ } else
+ {
+  echo "<div class='alert alert-danger' role='alert'>Échec de la modification</div>";
+ }
 }
 
 ?>
+<script type="text/javascript"></script>
       <form class="form-detail" action="" method="post" id="myform" onsubmit="return verifForm(this)" >
         <div class="form-left">
           <h2><center>Mon Profile</center> </h2>
             <div class="form-row form-row-1">
+              <input type="hidden" name="id_patient" value="<?php echo $_SESSION['id']; ?>" name="">
               <input type="text" name="nom" id="nom" class="input-text" value="<?php echo $_SESSION['nom_patient']; ?>"required>
             </div>
             <div class="form-row form-row-2">

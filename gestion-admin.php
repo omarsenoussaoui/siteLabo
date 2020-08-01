@@ -474,7 +474,7 @@ function delete_rec()
     $sql = "UPDATE `admin` SET `email`='$email' , `mot_passe`='$pass'  WHERE id_admin=$id";
       if (mysqli_query($conn,$sql))
                   {
-                    echo "<script> alert('La modification  est succées'); </script> ";
+                    echo "<script> alert('Modification avec succès'); </script> ";
                   }
                   else 
                   {
