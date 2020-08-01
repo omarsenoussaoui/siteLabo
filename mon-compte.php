@@ -112,7 +112,8 @@ if (!isset($_SESSION['nom_patient'])) {
      ?>
      <?php 
 if(isset($_POST['modifier'])) {
-  echo "<center><div class='alert alert-danger' role='alert'>".$_POST['nom']." </div></center>";
+  echo "<center><div class='alert alert-danger' role='alert'>".$_POST['nom']." </div>
+  <div class='alert alert-danger' role='alert'>".$_POST['prenom']." </div></center>";
 }
 
 ?>
