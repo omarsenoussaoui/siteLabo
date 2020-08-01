@@ -2,6 +2,7 @@
 if (!isset($_SESSION['nom_patient'])) {
    header("location:login-patient.php");
  } ?>
+ 
 <!DOCTYPE html>
 <html lang="en">
    <!-- Basic -->
@@ -13,6 +14,7 @@ if (!isset($_SESSION['nom_patient'])) {
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <style type="text/css"></style>
    <!-- Site Metas -->
    <title>Mon Compte</title>
    <meta name="keywords" content="">
@@ -36,6 +38,8 @@ if (!isset($_SESSION['nom_patient'])) {
    <!-- Modernizer for Portfolio -->
    <script src="js/modernizer.js"></script>
    <!-- [if lt IE 9] -->
+   <link rel="stylesheet" href="css/css-creez un comt/style.css"/>
+   <script src="js/jquery.min.js"></script> 
 
 
    </head>
@@ -89,16 +93,73 @@ if (!isset($_SESSION['nom_patient'])) {
             </div>
          </div>
       </header>
-    <br><br><br>
-    <br><br><br>
-
-      <?php
-      echo '<pre>';
-var_dump($_SESSION);
-echo '</pre>';
- ?>
 
 
+     <div class="page-content">
+    <div class="form-v10-content">
+    <?php 
+    if (isset($erreur1)and isset($erreur2)) {
+      echo "<div class='alert alert-danger' role='alert'>".$erreur1." </div>";
+      echo "<br>";
+      echo "<div class='alert alert-danger' role='alert'>".$erreur2." </div>";
+      
+     }elseif (isset($erreur2)) {
+      echo "<div class='alert alert-danger' role='alert'>".$erreur2." </div>";
+
+     } elseif (isset($erreur1)) {
+      echo "<div class='alert alert-danger' role='alert'>".$erreur1." </div>";
+
+     }
+     ?>
+      <form class="form-detail" action="" method="post" id="myform" onsubmit="return verifForm(this)" >
+        <div class="form-left">
+          <h2><center>Mon Profile</center> </h2>
+          <div class="form-group">
+            <div class="form-row form-row-1">
+              <input type="text" name="nom"  class="input-text" value="<?php echo$_SESSION['nom_patient']; ?>" required onblur="verifName(this)">
+            </div>
+            <div class="form-row form-row-2">
+              <input type="text" name="prenom"  class="input-text"  value="<?php echo$_SESSION['prenom_patient']; ?>" required>
+            </div>
+          </div>
+          <div class="form-row">
+            <input type="text" name="email" ondblclick='exchange(this)'; id=“itm1b” class=“replace” required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"  value="<?php echo$_SESSION['email_patient']; ?>" onblur="verifMail(this)">
+          </div>     
+          <div class="form-row">
+             <div class="input-group" id="show_hide_password">
+              <input type="password" name="mot_passe"  class="input-text"  value="<?php echo$_SESSION['mot_passe']; ?>">
+              <div style="background-color: white; border: 0px;" class= "input-group-addon">
+              <a href=""><i class="fa fa-eye-slash" aria-hidden="true"></i></a>
+            </div>
+    </div>
+          </div>    
+           
+
+          <div class="form-row" style="padding-bottom: 20px;" >
+            <input type="text" name="tlp"  class="input-text"  value="<?php echo$_SESSION['num_tlp']; ?>">
+          </div> <!--
+          $_SESSION['id']=$row['id_patient'];
+$_SESSION['nom_patient']=$row["nom_patient"];
+$_SESSION['prenom_patient']=$row["prenom_patient"];
+$_SESSION['email_patient']=$row['email'];
+$_SESSION['mot_passe']=$row['mot_passePa'];
+$_SESSION['num_tlp']=$row['num_tlp'];-->
+          
+
+          
+          <center><button style="font-size: 20px;font-family: Arial ; " type="envoyer" name="envoyer"  class="login100-form-btn">
+              Modifier
+            </button></center>
+
+          </div>
+
+        </div>
+          
+        </div>
+        
+      </form>
+    </div>
+  </div>
       
 
       <a href="#navbar" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
@@ -127,33 +188,72 @@ window.onclick = function(event) {
 }
 
 
+
+
+
       </script>
- 
-
-   <style type="text/css">
-                      
-              .dropdown-content {
-                background-color: #1a75ff;
-                display: none;
-                position: absolute;
-                min-width: 160px;
-                overflow: auto;
-                z-index: 1;
-
-              }
-
-              .dropdown-content a {
-                  
-                  text-decoration: none;
-                  display: block;
-                  text-align: left;
-              }
-              .show {display: block;}
-                     </style>
+      <!-- show and hide password-->
+      <script>
+$(document).ready(function() {
+    $("#show_hide_password a").on('click', function(event) {
+        event.preventDefault();
+        if($('#show_hide_password input').attr("type") == "text"){
+            $('#show_hide_password input').attr('type', 'password');
+            $('#show_hide_password i').addClass( "fa-eye-slash" );
+            $('#show_hide_password i').removeClass( "fa-eye" );
+        }else if($('#show_hide_password input').attr("type") == "password"){
+            $('#show_hide_password input').attr('type', 'text');
+            $('#show_hide_password i').removeClass( "fa-eye-slash" );
+            $('#show_hide_password i').addClass( "fa-eye" );
+        }
+    });
+});
+</script>
 
  
- 
 
+              <style type="text/css">    
+                 .dropdown-content {
+                    background-color: #1a75ff;
+                    display: none;
+                    position: absolute;
+                    min-width: 160px;
+                    overflow: auto;
+                    z-index: 1;
+                  }
+                  .dropdown-content a {
+                      text-decoration: none;
+                      display: block;
+                      text-align: left;
+                  }
+                  .show {display: block;}
+                          .login100-form-btn {
+                          font-family: Montserrat-Bold;
+                          font-size: 15px;
+                          line-height: 1.5;
+                          color: #fff;
+                          text-transform: uppercase;
 
+                          height: 50px;
+                          border-radius: 25px;
+                          background: #57b846;
+                          display: -webkit-box;
+                          display: -webkit-flex;
+                          display: -moz-box;
+                          display: -ms-flexbox;
+                          display: flex;
+                          justify-content: center;
+                          align-items: center;
+                          padding: 0 25px;
+
+                          -webkit-transition: all 0.4s;
+                          -o-transition: all 0.4s;
+                          -moz-transition: all 0.4s;
+                          transition: all 0.4s;
+                        }
+                        .login100-form-btn:hover {
+                          background: #00c6ff;
+                        }
+              </style>
    </body>
 </html>
