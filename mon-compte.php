@@ -94,8 +94,7 @@ if (!isset($_SESSION['nom_patient'])) {
          </div>
       </header>
 
-
-     <div class="page-content">
+    <div class="page-content">
     <div class="form-v10-content">
     <?php 
     if (isset($erreur1)and isset($erreur2)) {
@@ -111,19 +110,23 @@ if (!isset($_SESSION['nom_patient'])) {
 
      }
      ?>
+     <?php 
+if(isset($_POST['modifier'])) {
+  echo "<center><div class='alert alert-danger' role='alert'>".$_POST['nom']." </div></center>";
+}
+
+?>
       <form class="form-detail" action="" method="post" id="myform" onsubmit="return verifForm(this)" >
         <div class="form-left">
           <h2><center>Mon Profile</center> </h2>
-          <div class="form-group">
             <div class="form-row form-row-1">
-              <input type="text" name="nom"  class="input-text" value="<?php echo$_SESSION['nom_patient']; ?>" required onblur="verifName(this)">
+              <input type="text" name="nom" id="nom" class="input-text" value="<?php echo $_SESSION['nom_patient']; ?>"required>
             </div>
             <div class="form-row form-row-2">
-              <input type="text" name="prenom"  class="input-text"  value="<?php echo$_SESSION['prenom_patient']; ?>" required>
+              <input type="text" name="prenom"  class="input-text"  value="<?php echo $_SESSION['prenom_patient']; ?>" required>
             </div>
-          </div>
           <div class="form-row">
-            <input type="text" name="email" ondblclick='exchange(this)'; id=“itm1b” class=“replace” required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"  value="<?php echo$_SESSION['email_patient']; ?>" onblur="verifMail(this)">
+            <input type="text" name="email" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}"  value="<?php echo$_SESSION['email_patient']; ?>" >
           </div>     
           <div class="form-row">
              <div class="input-group" id="show_hide_password">
@@ -139,15 +142,12 @@ if (!isset($_SESSION['nom_patient'])) {
             <input type="text" name="tlp"  class="input-text"  value="<?php echo$_SESSION['num_tlp']; ?>">
           </div> <!--
           $_SESSION['id']=$row['id_patient'];
-$_SESSION['nom_patient']=$row["nom_patient"];
-$_SESSION['prenom_patient']=$row["prenom_patient"];
-$_SESSION['email_patient']=$row['email'];
-$_SESSION['mot_passe']=$row['mot_passePa'];
-$_SESSION['num_tlp']=$row['num_tlp'];-->
-          
-
-          
-          <center><button style="font-size: 20px;font-family: Arial ; " type="envoyer" name="envoyer"  class="login100-form-btn">
+          $_SESSION['nom_patient']=$row["nom_patient"];
+          $_SESSION['prenom_patient']=$row["prenom_patient"];
+          $_SESSION['email_patient']=$row['email'];
+          $_SESSION['mot_passe']=$row['mot_passePa'];
+          $_SESSION['num_tlp']=$row['num_tlp'];-->
+          <center><button style="font-size: 20px;font-family: Arial ; " type="envoyer" name="modifier" class="login100-form-btn">
               Modifier
             </button></center>
 
@@ -168,6 +168,7 @@ $_SESSION['num_tlp']=$row['num_tlp'];-->
 
       <script src="js/custom.js"></script>
       <script type="text/javascript">
+
       
 function myFunction() {
   document.getElementById("myDropdown").classList.toggle("show");
@@ -188,9 +189,10 @@ window.onclick = function(event) {
 }
 
 
+$(document).ready(function(){
+    var current = "<?php echo $_SESSION['nom_patient']; ?>" ;
 
-
-
+    $('#nom').val(current);
       </script>
       <!-- show and hide password-->
       <script>
