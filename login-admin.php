@@ -94,8 +94,54 @@ if (isset($_SESSION['admin'])) {
 	<link rel="stylesheet" type="text/css" href="css/css-login/main.css">
 <!--===============================================================================================-->
 </head>
-
 <body >
+         <header>
+         
+         <div class="header-bottom wow fadeIn">
+            <div class="container">
+               <nav class="main-menu">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                  </div>
+          
+                  <div id="navbar" class="navbar-collapse collapse">
+                  <a class="navbar-brand" href="index.php"><img src="images/logo-2.png" alt="image"></a>
+                     <ul class="nav navbar-nav">
+                     
+                        <li><a style="font-size: 20px;font-family: Arial"  class="active"  href="index.php">Accueil</a></li>
+                       
+                        <li><a style="font-size: 20px;font-family: Arial" data-scroll href="">Services</a></li>
+                        <li><a style="font-size: 20px;font-family: Arial"  dstyle="font-size: 20px;font-family: Arial"ata-scroll href="contact.php" target="_blanck">Contact</a></li>
+                        <li><a style="font-size: 20px;font-family: Arial"data-scroll href="signup1.php">Rendez-Vous</a></li>
+                        <li> <?php if (!isset($_SESSION['nom_patient'])) {
+                          
+                        ?>
+                          <a onclick="myFunction()" onmouseover="myFunction()" class="dropbtn" style="font-size: 20px;font-family: Arial"  data-scroll >Connexion </a>
+              <div class="dropdown">
+                
+                <div  id="myDropdown" class="dropdown-content">
+                  <a  href="signup2.php" target="_blanck" style="font-size: 20px;font-family: Arial" data-scroll>Connectez </a>
+                  <a data-scroll href="creez un compte.php " style="font-size: 20px;font-family: Arial">Inscription</a>
+                </div>
+              </div>
+            </li> <?php 
+            }else{
+              echo "<li><a style='font-size: 20px;font-family: Arial'data-scroll href='mon-comptte.php'>Mon compte</a></li>";
+              echo "<li><a style='font-size: 20px;font-family: Arial'data-scroll href='logout.php'>Logout</a></li>";
+            }
+             ?>
+            
+                     </ul>
+
+                     
+                  </div>
+
+               </nav>
+            
+               
+            </div>
+         </div>
+      </header>
 	<div class="limiter">
 		<div class="container-login100">
 			<div class="wrap-login100">
@@ -125,7 +171,7 @@ if (isset($_SESSION['admin'])) {
 					</div>
 					<input type="checkbox" name="remember"> Remember Me
 					<button style="font-size: 20px;font-family: Arial" name="submit"  class="login100-form-btn">
-							envoyer
+							Login
 						</button>
 					<div class="text-center p-t-136">
 						
@@ -193,5 +239,80 @@ function verifForm(f)
 }
 
 	</script>
+         <script type="text/javascript">
+        /* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+
+      </script>
+ 
+<!-- style de images slide -->
+   <style type="text/css">
+      
+       #slider{
+         width: 100% ;
+         height: 600px;
+         margin: 20px auto;
+         position: relative;
+         border: 10px solid white;
+         box-shadow: 0px 0px 5px 2px #ccc;
+       }
+       /*button{
+         padding: 20px;
+         border: none;
+         background: #37f;
+         font-size: 30px;
+         color: white;
+         position: absolute;
+         top:45%;
+         cursor: pointer;
+       }*/
+
+        .next{
+         border-radius: 10px 10px 10px 10px;
+         margin-left: 95.5%;
+        }
+        .prew{
+         border-radius: 10px 10px 10px 10px;
+        }
+
+   </style>
+   <style type="text/css">
+                      
+              .dropdown-content {
+                background-color: #1a75ff;
+                display: none;
+                position: absolute;
+                min-width: 160px;
+                overflow: auto;
+                z-index: 1;
+
+              }
+
+              .dropdown-content a {
+                  
+                  text-decoration: none;
+                  display: block;
+                  text-align: left;
+              }
+              .show {display: block;}
+                     </style>
 	
 </html>

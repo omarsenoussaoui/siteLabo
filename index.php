@@ -140,7 +140,7 @@ function make_slides($connect)
               </div>
             </li> <?php 
             }else{
-              echo "<li><a style='font-size: 20px;font-family: Arial'data-scroll href='mon-compte.php'>Mon compte</a></li>";
+              echo "<li><a style='font-size: 20px;font-family: Arial'data-scroll href='mon-comptte.php'>Mon compte</a></li>";
               echo "<li><a style='font-size: 20px;font-family: Arial'data-scroll href='logout.php'>Logout</a></li>";
             }
              ?>

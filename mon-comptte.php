@@ -1,12 +1,12 @@
 <?php 
-
+session_start();
  $conn = mysqli_connect("localhost", "root", "");
  $db = mysqli_select_db($conn, "labo");
 
 
 if (!isset($_SESSION['nom_patient'])){
    header("location:login-patient.php");
- } 
+ }
  ?>
  
 <!DOCTYPE html>
