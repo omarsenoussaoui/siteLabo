@@ -1,4 +1,4 @@
-<?php session_start();
+<?php $_ion_start();
 
  $conn = mysqli_connect("localhost", "root", "");
  $db = mysqli_select_db($conn, "labo");
@@ -128,7 +128,8 @@ if(isset($_POST['modifier'])) {
  $q="UPDATE patient SET nom_patient= '$nom_patient',prenom_patient='$prenom_patient',email = '$email_patient', mot_passePa = '$mot_passe', num_tlp='$num_tlp' WHERE id_patient='$id_patient' ";
 if (mysqli_query($conn,$q)) 
 {
-  echo "<div class='alert alert-success' role='alert'>Modification avec succès</div>";
+  echo '<script>alert(" Modification avec succès")</script>'; 
+
   $_SESSION['id']=$id_patient;
   $_SESSION['nom_patient']=$nom_patient;
   $_SESSION['prenom_patient']=$prenom_patient;
@@ -136,7 +137,6 @@ if (mysqli_query($conn,$q))
   $_SESSION['mot_passe']=$mot_passe;
   $_SESSION['num_tlp']=$num_tlp;
  header("Refresh:3");
- 
  } else
  {
   echo "<div class='alert alert-danger' role='alert'>Échec de la modification</div>";
@@ -287,5 +287,6 @@ $(document).ready(function() {
                           background: #00c6ff;
                         }
               </style>
+
    </body>
 </html>

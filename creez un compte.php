@@ -20,7 +20,8 @@ if (isset($_POST['envoyer'])) {
 	echo $nom;
 	
 	$q="INSERT INTO `patient`(`id_patient`, `nom_patient`, `prenom_patient`, `email`, `mot_passePa`, `num_tlp`) VALUES ('','$nom','$prenom','$email','$mot_passe','$tlp')";
-	if (mysqli_query($conn,$q)) {
+	if (mysqli_query($conn,$q)) 
+	{
 		$_SESSION['nom_patient']=$nom;
 		$_SESSION['prenom_patient']=$prenom;
 		header("location:index.php");

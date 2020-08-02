@@ -1,4 +1,6 @@
-<?php session_start(); ?>
+<?php session_start();
+ $conn = mysqli_connect("localhost", "root", "");
+   $db = mysqli_select_db($conn, "labo"); ?>
 <!DOCTYPE html>
 <html>
 <head>
@@ -70,21 +72,41 @@ if (isset($_SESSION['nom_patient'])) {
 
 
   <?php 
-}else{
+}else
+{
 header("location:login-patient.php");
 }
+if (isset($_POST['reserver'])) 
+{
+  $id_patient=$_SESSION['id'];
+  $datte= $_POST['datte'];
+  $timme= $_POST['timme'];
+$q="INSERT INTO `rdv`(`id_rdv`, `date`, `time`, `type_analyse`, `ord`, `id_patient`) VALUES ('','$datte','$timme','BIOCHEMIE','','$id_patient')";
+ if (mysqli_query($conn,$q)) 
+ {
+   echo "réservé";
+ }
+ else
+  {
+    echo "non";
+  }
+
+
+}
+
  ?>
  </div>
-			<form class="form-detail" action="#" method="post" id="myform">
+			<form class="form-detail" method="post" id="myform">
 				<div class="form-right">
 					<div class="form-right">
 					<h2>INFORMATION POUR RENDEZ-VOUS</h2>
 					<div class="form-row">
-						<input type="Date" name="street" class="street" id="street" placeholder="La date de RENDEZ-VOUS" required>
+						<input type="Date" name="datte" class="" id="" placeholder="" required>
+            <input type="time" name="timme" class="" id="" placeholder="" required>
 					</div>
 					
 
-					<div class="container">
+					<!--<div class="container">
 						<ul class="ks-cboxtags">
 							<label style="color: white; font-size: 17px; " > Choisissez le type d'Analyse   </label> </br><br>
 							 <li><input type="checkbox" id="checkboxOne" value="Rainbow Dash"><label for="checkboxOne">HUMONOLOGIE</label></li>
@@ -94,14 +116,15 @@ header("location:login-patient.php");
 							<li  ><input type="checkbox" id="checkboxFive" value="Surprise"><label for="checkboxFive">BIOCHIMIE</label></li>
 							
 						 </ul>
+            -->
 
 					</div>					
-						<div class="form-row form-row-1">
+						<div class="form-row">
 							<label style="color: white;" > Scannez Votre Ordonnance SVP !</label><br><br>
-							<input type="file" style="border: 0px;" required>
+							<input type="file" name="ord" style="border: 0px;" required>
 						</div>
 					<div class="form-row-last">
-						<input type="submit" name="register" class="register" value="Envoyer">
+						<input type="submit" name="reserver" class="register" value="Envoyer">
 					</div>
 				</div>
 			</form>

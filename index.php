@@ -42,19 +42,20 @@ function make_slides($connect)
  {
   if($count == 0)
           {
-           $output .= '<div  class="item active ">';
+           $output .= '<div class="item active ">';
           }
   else
           {
-           $output .= '<div   class="item">';
+           $output .= '<div class="item">';
           }
 
   $output .= '
-  <div class="center">
-   <img style="width:100% height:200px;" "class="img-fluid" alt="Responsive image" src="images/'.$row["banner_image"].'" alt="'.$row["banner_title"].'" />
-   <div class="carousel-caption">
-   </div>
-  </div>
+  
+   <img style="width:100%;" "class="img-fluid" alt="Responsive image" src="images/'.$row["banner_image"].'" alt="'.$row["banner_title"].'" />
+    <div class="carousel-caption">
+          <h3>'.$row["banner_title"].'</h3>
+          <p></p>
+        </div>
   </div>
   ';
   $count = $count + 1;
@@ -157,12 +158,10 @@ function make_slides($connect)
       </header>
 <br></br>
 <div  class="container">
-   
    <div  id="dynamic_slide_show" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
     <?php echo make_slide_indicators($connect); ?>
     </ol>
-
     <div class="carousel-inner">
      <?php echo make_slides($connect); ?>
     </div>
@@ -170,7 +169,6 @@ function make_slides($connect)
      <span class="glyphicon glyphicon-chevron-left"></span>
      <span class="sr-only">Previous</span>
     </a>
-
     <a class="right carousel-control" href="#dynamic_slide_show" data-slide="next">
      <span class="glyphicon glyphicon-chevron-right"></span>
      <span class="sr-only">Next</span>
