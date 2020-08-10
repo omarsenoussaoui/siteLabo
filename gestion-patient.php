@@ -88,13 +88,9 @@ echo "<br><br>";
       <br><br>
 
 
-
-<?php 
- ?>
-
 <br>
 <h1 class="text-danger text-center">La Liste des Patients</h1>
-    <table class="table table-bordered table-dark text-center">
+<table class="table table-bordered table-dark text-center">
   <thead>
     <tr >
       <th  class="text-center" scope="col">Num</th>
@@ -137,7 +133,7 @@ while( $rows = mysqli_fetch_assoc($resul) ) {
 </div>
 </tbody>
 </table>
-  <table class="table table-bordered table-dark text-center">
+<table class="table table-bordered table-dark text-center">
   <thead>
     <tr >
       <th  class="text-center" scope="col">Num</th>

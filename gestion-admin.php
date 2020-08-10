@@ -357,7 +357,7 @@ function get_rec()
   { 
    var ID =$(this).attr('data-id');
    $.ajax({
-      url : 'view-admin.php',
+      url : 'crud_admin/view-admin.php',
       method:'POST',
       dataType:'JSON',
       data:{ID:ID},
@@ -428,7 +428,7 @@ function delete_rec()
       $('#deleteModal').modal('show');
       $(document).on('click','#btn_delete',function () {
         $.ajax({
-            url:"delete-admin.php",
+            url:"crud_admin/delete-admin.php",
             method:"POST",
             data:{ID:deletID},
             success:function (data) 

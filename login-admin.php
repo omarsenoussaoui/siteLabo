@@ -27,9 +27,10 @@ if(isset($_POST['submit'])){
  else
  {
 
- $error = "Username of Password is Invalid";
+ $error = "<h1 class='alert alert-danger' role='alert'>
+Email  ou  Mot de passe  est Invalide </h1> ";
 
- echo " <h1 style='color=red; '>Email  ou  Mot de passe  est Invalide </h1> ";
+
 
  }
 
@@ -52,7 +53,7 @@ if (isset($_SESSION['admin'])) {
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href=css/bootstrap4.min.css">
+  <!-- <link rel="stylesheet" href=css/bootstrap4.min.css">-->
    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
    <!-- Site Metas -->
    <title>Connexion</title>
@@ -144,6 +145,9 @@ if (isset($_SESSION['admin'])) {
       </header>
 	<div class="limiter">
 		<div class="container-login100">
+      <?php if (isset($error)) {
+        echo $error;
+      } ?>
 			<div class="wrap-login100">
 				<div class="login100-pic js-tilt" data-tilt>
 					<img src="images/img-0001.png" alt="IMG">
