@@ -15,6 +15,7 @@ function get_rec()
 		$User_data[0]= $rows['banner_id'];
 		$User_data[1]= $rows['banner_title'];
 		$User_data[2]= $rows['banner_image'];
+		$User_data[3]= $rows['detail'];
 
 	}
 	echo json_encode($User_data);

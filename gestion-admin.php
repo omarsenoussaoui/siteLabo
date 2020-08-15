@@ -77,6 +77,30 @@ echo "<br><br>";
                
             </div>
          </div>
+         <style type="text/css">
+           
+                      
+              .dropdown-content {
+                background-color: #1a75ff;
+                display: none;
+                position: absolute;
+                min-width: 160px;
+                overflow: auto;
+                z-index: 1;
+
+              }
+
+              .dropdown-content a {
+                  
+                  text-decoration: none;
+                  display: block;
+                  text-align: left;
+              }
+              .show {display: block;}
+
+
+
+         </style>
       </header>
       <div>
 

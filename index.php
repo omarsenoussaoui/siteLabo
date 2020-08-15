@@ -54,7 +54,9 @@ function make_slides($connect)
    <img style="width:100%;" "class="img-fluid" alt="Responsive image" src="images/'.$row["banner_image"].'" alt="'.$row["banner_title"].'" />
     <div class="carousel-caption">
           <h3>'.$row["banner_title"].'</h3>
-          <p></p>
+          <p style="color:red;">'.$row["detail"].'</p>
+          
+
         </div>
   </div>
   ';

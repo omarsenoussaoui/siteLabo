@@ -109,6 +109,239 @@ function make_slides($connect)
   <script src="js/bootstrap.min.js"></script>
    </head>
  <body>
+        <header>
+         <div class="header-bottom wow fadeIn">
+            <div class="container">
+               <nav class="main-menu">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                  </div>
+                 
+                  <div id="navbar" class="navbar-collapse collapse">
+                     <ul class="nav navbar-nav">
+                        <li><a style="font-size: 20px;font-family: Arial"  href="tousrdv.php">Tous les RDV</a></li>
+                        <li><a style="font-size: 20px;font-family: Arial" data-scroll href="rdv-auj.php">RDV d'aujourd'hui</a></li>
+                        <li> <a onclick="myFunction()" onmouseover="myFunction()" class="dropbtn" style="font-size: 20px;font-family: Arial"  data-scroll >Gestion des membre </a>
+                                       <div class="dropdown">
+                                         
+                                         <div  id="myDropdown" class="dropdown-content">
+                                           <a  style="font-size: 20px;font-family: Arial" data-scroll href="gestion-patient.php">Gestion des patient</a>
+                                           <a data-scroll href="gestion-admin.php" style="font-size: 20px;font-family: Arial">Gestion des ADMINS</a>
+                                         </div>
+                                       </div>
+                                    </li> 
+                        <li><a style="font-size: 20px;font-family: Arial"  dstyle="font-size: 20px;font-family: Arial"ata-scroll href="messages.php" >les messages</a></li>
+                        <li><a style="font-size: 20px;font-family: Arial"data-scroll href="">Nos service</a></li> 
+                        <li><a style="font-size: 20px;font-family: Arial"data-scroll href="logout.php">Log Out</a></li>
+                     </ul>
+                    
+                  </div>
+               </nav>
+               
+            </div>
+         </div>
+      </header>
+      <style type="text/css">
+                      
+              .dropdown-content {
+                background-color: #1a75ff;
+                display: none;
+                position: absolute;
+                min-width: 160px;
+                overflow: auto;
+                z-index: 1;
+
+              }
+
+              .dropdown-content a {
+                  
+                  text-decoration: none;
+                  display: block;
+                  text-align: left;
+              }
+              .show {display: block;}
+
+
+
+
+
+
+              @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+@media(min-width:768px) {
+    body {
+        margin-top: 50px;
+    }
+    /*html, body, #wrapper, #page-wrapper {height: 100%; overflow: hidden;}*/
+}
+
+#wrapper {
+    padding-left: 0;    
+}
+
+#page-wrapper {
+    width: 100%;        
+    padding: 0;
+    background-color: #fff;
+}
+
+@media(min-width:768px) {
+    #wrapper {
+        padding-left: 225px;
+    }
+
+    #page-wrapper {
+        padding: 22px 10px;
+    }
+}
+
+/* Top Navigation */
+
+.top-nav {
+    padding: 0 15px;
+}
+
+.top-nav>li {
+    display: inline-block;
+    float: left;
+}
+
+.top-nav>li>a {
+    padding-top: 20px;
+    padding-bottom: 20px;
+    line-height: 20px;
+    color: #fff;
+}
+
+
+
+.top-nav>.open>.dropdown-menu {
+    float: left;
+    position: absolute;
+    margin-top: 0;
+    /*border: 1px solid rgba(0,0,0,.15);*/
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    background-color: #fff;
+    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
+    box-shadow: 0 6px 12px rgba(0,0,0,.175);
+}
+
+.top-nav>.open>.dropdown-menu>li>a {
+    white-space: normal;
+}
+
+/* Side Navigation */
+
+@media(min-width:768px) {
+    .side-nav {
+        position: fixed;
+        top: 60px;
+        left: 225px;
+        width: 225px;
+        margin-left: -225px;
+        border: none;
+        border-radius: 0;
+        border-top: 1px rgba(0,0,0,.5) solid;
+        overflow-y: auto;
+        background-color: #222;
+        /*background-color: #5A6B7D;*/
+        bottom: 0;
+        overflow-x: hidden;
+        padding-bottom: 40px;
+    }
+
+    .side-nav>li>a {
+        width: 225px;
+        border-bottom: 1px rgba(0,0,0,.3) solid;
+    }
+
+    .side-nav li a:hover,
+    .side-nav li a:focus {
+        outline: none;
+        background-color: #39b49a !important;
+    }
+}
+
+.side-nav>li>ul {
+    padding: 0;
+    border-bottom: 1px rgba(0,0,0,.3) solid;
+}
+
+.side-nav>li>ul>li>a {
+    display: block;
+    padding: 10px 15px 10px 38px;
+    text-decoration: none;
+    /*color: #999;*/
+    color: #fff;    
+}
+
+.side-nav>li>ul>li>a:hover {
+    color: #fff;
+}
+
+.navbar .nav > li > a > .label {
+  -webkit-border-radius: 50%;
+  -moz-border-radius: 50%;
+  border-radius: 50%;
+  position: absolute;
+  top: 14px;
+  right: 6px;
+  font-size: 10px;
+  font-weight: normal;
+  min-width: 15px;
+  min-height: 15px;
+  line-height: 1.0em;
+  text-align: center;
+  padding: 2px;
+}
+
+.navbar .nav > li > a:hover > .label {
+  top: 10px;
+}
+
+.navbar-brand {
+    padding: 5px 15px;
+}
+
+
+
+                     </style>
+<script type="text/javascript">
+         /* When the user clicks on the button, 
+toggle between hiding and showing the dropdown content */
+function myFunction() {
+  document.getElementById("myDropdown").classList.toggle("show");
+}
+
+// Close the dropdown if the user clicks outside of it
+window.onclick = function(event) {
+  if (!event.target.matches('.dropbtn')) {
+    var dropdowns = document.getElementsByClassName("dropdown-content");
+    var i;
+    for (i = 0; i < dropdowns.length; i++) {
+      var openDropdown = dropdowns[i];
+      if (openDropdown.classList.contains('show')) {
+        openDropdown.classList.remove('show');
+      }
+    }
+  }
+}
+
+$(function(){
+    $('[data-toggle="tooltip"]').tooltip();
+    $(".side-nav .collapse").on("hide.bs.collapse", function() {                   
+        $(this).prev().find(".fa").eq(1).removeClass("fa-angle-right").addClass("fa-angle-down");
+    });
+    $('.side-nav .collapse').on("show.bs.collapse", function() {                        
+        $(this).prev().find(".fa").eq(1).removeClass("fa-angle-down").addClass("fa-angle-right");        
+    });
+})    
+    
+
+      </script>
+
+<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+</html>
  <br>
 <div class="text-center">
   <?php  if (isset($errreur)) {
@@ -127,8 +360,8 @@ function make_slides($connect)
       <th  class="text-center" scope="col">Num</th>
       <th  class="text-center" scope="col">ID</th>
       <th  class="text-center" scope="col">Titre</th>
+      <th  class="text-center" scope="col">Description</th>
       <th  class="text-center" scope="col">Image</th>
-     <!-- <th  class="text-center" scope="col">afficher</th>-->
       <th  class="text-center" scope="col">Options</th>
       
     </tr>
@@ -146,6 +379,7 @@ while( $rows = mysqli_fetch_assoc($resul) ) {
           <td><?php echo $i=$i+1; ?></td>
           <td><?php echo $rows["banner_id"]; ?></td>
           <td><?php echo $rows["banner_title"]; ?></td>
+          <td><?php echo $rows["detail"]; ?></td>
           <td><a href="" data-toggle="modal" data-target="#myModal<?php echo $rows['banner_id']; ?>" ><?php echo $rows["banner_image"]?></a></td>
           <!---<td><button type="button" class="btn btn-primary" data-toggle="modal" data-target="#myModal<?php echo $rows['banner_id']; ?>">Afficher</button></td>-->
           <td>
@@ -195,6 +429,11 @@ while( $rows = mysqli_fetch_assoc($resul) ) {
           <form id="formU" method="POST" enctype="multipart/form-data" >
          <label  class="label" >le titre de l'annonce</label>
           <input type="text" id="UP_Title" name="titre_mod" class="form-control validate">
+        </div>
+        <div class="md-form mb-5">
+          <form id="formU" method="POST" enctype="multipart/form-data" >
+         <label  class="label" >Description de l'annonce</label>
+          <textarea type="text" id="UP_desc" name="desc_mod" class="form-control validate"></textarea>
         </div>
         <div class="md-form mb-5">
         <label   class="label"  >Image</label>
@@ -293,17 +532,20 @@ while( $rows = mysqli_fetch_assoc($resul) ) {
           <i class="fas fa-user prefix grey-text"></i>
           <label data-error="wrong" data-success="right" for="orangeForm-name">Titre de l'Annonce</label>
           <input type="text" name="titre" class="form-control validate">
-          
+        </div>
+        <div class="md-form mb-5">
+          <i class="fas fa-envelope prefix grey-text"></i>
+          <label data-error="wrong" data-success="right" for="orangeForm-email">Description De l'Annonce</label>
+          <textarea  name="description"  class="form-control validate"></textarea>
         </div>
         <div class="md-form mb-5">
           <i class="fas fa-envelope prefix grey-text"></i>
           <label data-error="wrong" data-success="right" for="orangeForm-email">Image De l'Annonce</label>
           <input type="file" name="file"  class="form-control validate">
-          
         </div>
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <button name="submit" class="btn btn-primary">Ajouter</button>
+        <button name="submit-ajouter" class="btn btn-primary">Ajouter</button>
       </div>
     </div>
   </div>
@@ -314,11 +556,12 @@ while( $rows = mysqli_fetch_assoc($resul) ) {
 <?php 
           /*ajouter annonce*/
           
-          if (isset($_POST['submit'])) 
+          if (isset($_POST['submit-ajouter'])) 
           {
             $titre=$_POST['titre'];
+            $description=$_POST['description'];
             $files = $_FILES['file'];
-            echo "</br>";
+            echo $description;
             $filetmp = $files['tmp_name'];/*chemin*/
             $filename= $files['name'];/*nom*/
             $fileext=explode('.',$filename);
@@ -327,7 +570,9 @@ while( $rows = mysqli_fetch_assoc($resul) ) {
             if (in_array($filecheck,$fileextstored)) {
               $distinationfile='images/'.$filename;
               move_uploaded_file($filetmp, $distinationfile);
-              $q="INSERT INTO `banner`(`banner_id`, `banner_title`, `banner_image`) VALUES ('','$titre','$filename')";
+
+/*$q="INSERT INTO `banner`(`banner_id`, `banner_title`, `detail`, `banner_image`, `val`) VALUES ('','$titre','$_POST["description"]','$filename','')";*/
+$q="INSERT INTO `banner`(`banner_id`, `banner_title`, `detail`, `banner_image`, `val`) VALUES ('','$titre','$description','$filename','0')";
               if (mysqli_query($conn,$q)){
                 echo "<script> alert('La saisie est succée'); </script> ";
               }
@@ -360,6 +605,7 @@ function get_rec()
         $('#UP_Title').val(data[1]);
         $('#UP_Image').val( data[2]);
         $('#UP_Id').val(data[0]);
+        $('#UP_desc').val(data[3]);
         $('#Update').modal('show');
       }
     })
@@ -377,6 +623,7 @@ function update_record() {
     var ID = $('#UP_Id').val();
     var Titre = $('#UP_Title').val();
     var Image = $('#UP_Image').val();
+    var description =$('#UP_desc').val();
     if (Titre=='' ||  Image =='') 
     {
       $('#up_message').html('Remplissez les champs svp');
@@ -438,12 +685,13 @@ function delete_rec()
 
 </script>
 <?php 
-          /*ajouter annonce*/
+          /*mod annonce*/
           
           if (isset($_POST['update'])) 
           {
             $titre=$_POST['titre_mod'];
             $id_mod= $_POST['id_mod'];
+            $description = $_POST['desc_mod'];
             if (isset($_FILES['file_mod']))
             {
               $files = $_FILES['file_mod'];
@@ -455,8 +703,8 @@ function delete_rec()
                 if (in_array($filecheck,$fileextstored)) 
                 {
                   $distinationfile='images/'.$filename;
-                  move_uploaded_file($filetmp, $distinationfile);
-                  $q="UPDATE `banner` SET `banner_title`='$titre' , `banner_image`='$filename'  WHERE banner_id=$id_mod";
+                  move_uploaded_file($filetmp, $distinationfile);                 
+                  $q="UPDATE `banner` SET `banner_title`='$titre',`detail`='$description' , `banner_image`='$filename'  WHERE banner_id=$id_mod";
                   if (mysqli_query($conn,$q))
                   {
                     echo "<script> alert('La modification  est succées'); </script> ";
@@ -474,11 +722,17 @@ function delete_rec()
             else{
                   $filename= $_POST['file_mod'];
                   $titre=$_POST['titre_mod'];
+                  $description = $_POST['desc_mod'];
                   $id_mod= $_POST['id_mod'];
-                  $q="UPDATE `banner` SET `banner_title`='$titre' , `banner_image`='$filename'  WHERE banner_id=$id_mod";
+                  $q="UPDATE `banner` SET `banner_title`='$titre',`detail`='$description' , `banner_image`='$filename'  WHERE banner_id=$id_mod";
                   if (mysqli_query($conn,$q))
                   {
-                    echo "<script> alert('La modification  est succées'); </script> ";
+                    echo "<script>
+                     alert('La modification  est succées');
+                     </script> ";
+
+
+
                   }
                   else 
                   {

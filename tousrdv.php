@@ -6,11 +6,6 @@ if (isset($_SESSION['admin'])) {
 }else{
   header("location:login-admin.php");
 }
-echo "<br><br>";
-
-
-
-
  ?>
 
 <!DOCTYPE html>
@@ -91,16 +86,25 @@ echo "<br><br>";
   </div>
 </div>
 
-<div class="text-center">
-  <a href="" class="btn btn-default btn-rounded mb-4" data-toggle="modal" data-target="#modalContactForm">Launch
-    Modal Contact Form</a>
-</div>
 
 <!--script get rec-->
  <script type="text/javascript">
       $(document).ready(function () 
       {
           get_rec();
+          $('.td').on('click', function() {
+    var $this = $(this);
+    var $input = $('<input>', {
+        value: $this.text(),
+        type: 'text',
+        blur: function() {
+           $this.text(this.value);
+        },
+        keyup: function(e) {
+           if (e.which === 13) $input.blur();
+        }
+    }).appendTo( $this.empty() ).focus();
+});
       });
 function get_rec() 
 {
@@ -121,6 +125,7 @@ function get_rec()
   });
 
 }
+
 </script>
 <!---------------------------update modal-------------------------------->
 
@@ -158,7 +163,7 @@ function get_rec()
          </div>
       </header>
       <br>
-      <div id="wrapper">
+<div id="wrapper">
     <!-- Navigation -->
     <nav class="  " role="navigation">
         <!-- Brand and toggle get grouped for better mobile display -->
@@ -225,7 +230,7 @@ while( $rows = mysqli_fetch_assoc($resul) ) {
 <td><?php echo $i=$i+1; ?></td>
 <td><?php echo $rows["id_rdv"]; ?></td>
 <td><?php echo $rows["date"]; ?></td>
-<td><?php echo $rows["type_analyse"]?></td>
+<td class="td" ><?php echo $rows["type_analyse"]?></td>
 <td><?php echo $rows["ord"]?></td>
 <td><?php echo $rows["id_patient"]?></td>
 <td><?php echo $rows["nom_patient"]?></td>
