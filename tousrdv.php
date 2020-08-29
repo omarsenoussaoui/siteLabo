@@ -194,13 +194,13 @@ function get_rec()
         <!-- /.navbar-collapse -->
     </nav>
 
-    <div id="page-wrapper">
-        <div class="container-fluid">
-            <!-- Page Heading -->
-            <div class="row" id="main" >
-                <div class="col-sm-12 col-md-12 " id="content">
-                    <table class="table table-bordered text-center">
-  <thead>
+<div id="page-wrapper">
+<div class="container-fluid">
+<!-- Page Heading -->
+<div class="row" id="main" >
+<div class="col-sm-12 col-md-12 " id="content">
+  <table class="table table-bordered text-center">
+    <thead>
     <tr >
       <th  class="text-center" scope="col">Num</th>
       <th  class="text-center" scope="col">ID Rdv</th>
