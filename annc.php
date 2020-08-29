@@ -340,7 +340,7 @@ $(function(){
 
       </script>
 
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+
 </html>
  <br>
 <div class="text-center">
@@ -580,7 +580,7 @@ $q="INSERT INTO `banner`(`banner_id`, `banner_title`, `detail`, `banner_image`, 
                 $errreur="ce fichier n'est pas une image";
               }
             }
-              ?>
+?>
  </body>
  <script type="text/javascript">
   $(document).ready(function () {

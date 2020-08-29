@@ -120,7 +120,7 @@ if (isset($_SESSION['nom_patient']) ) {
                   </div>
           
                   <div id="navbar" class="navbar-collapse collapse">
-                  <a class="navbar-brand" href="index.php"><img src="images/logo-2.png" alt="image"></a>
+                  <a class="navbar-brand" href="index.php"><img src="images/logoo.png" alt="image"></a>
                      <ul class="nav navbar-nav">
                      
                         <li><a style="font-size: 20px;font-family: Arial"  class="active"  href="index.php">Accueil</a></li>

@@ -1,17 +1,23 @@
 <?php 
-   include('cnx.php');
+include('cnx.php');
+$conn = mysqli_connect("localhost", "root", "");
+ $db = mysqli_select_db($conn, "labo");
+
+
+
 session_start();
 if (isset($_SESSION['admin'])) {
   
 }else{
   header("location:login-admin.php");
 }
+echo "<br><br>";
  ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
-
-<!-- Basic -->
+   <!-- Basic -->
    <meta charset="utf-8">
    <meta http-equiv="X-UA-Compatible" content="IE=edge">
    <!-- Mobile Metas -->
@@ -47,11 +53,48 @@ if (isset($_SESSION['admin'])) {
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <script src="js/jquery.min.js"></script> 
   <script src="js/bootstrap.min.js"></script>
-
    </head>
    <body style="font-size: 20px;font-family: Arial"  class="clinic_version">
       <!-- LOADER -->
- <!-----------------------------------modal update--------------->
+<header>
+  <div class="header-bottom wow fadeIn">
+            <div class="container">
+               <nav class="main-menu">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                  </div>
+          
+                  <div id="navbar" class="navbar-collapse collapse">
+                     <ul class="nav navbar-nav">
+                        <li><a style="font-size: 20px;font-family: Arial;;" href="">Gestion des Admins</a></li>
+                        
+                     </ul>
+                    
+                  </div>
+               </nav>
+               
+            </div>
+</div>
+<style type="text/css">
+.dropdown-content {
+background-color: #1a75ff;
+display: none;
+position: absolute;
+min-width: 160px;
+overflow: auto;
+z-index: 1;
+}
+.dropdown-content a 
+{
+text-decoration: none;
+display: block;
+text-align: left;
+}
+.show {display: block;
+}
+</style>
+</header>
+<!-----------------------------------modal update--------------->
 <div class="modal fade" id="Update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
@@ -88,43 +131,30 @@ if (isset($_SESSION['admin'])) {
 
 
 <!--script get rec-->
- <script type="text/javascript">
-      $(document).ready(function () 
-      {
-          get_rec();
-          $('.td').on('click', function() {
-    var $this = $(this);
-    var $input = $('<input>', {
-        value: $this.text(),
-        type: 'text',
-        blur: function() {
-           $this.text(this.value);
-        },
-        keyup: function(e) {
-           if (e.which === 13) $input.blur();
-        }
-    }).appendTo( $this.empty() ).focus();
-});
-      });
-function get_rec() 
-{
-  $(document).on('click','#btn_show',function() 
+<script type="text/javascript">
+$(document).ready(function ()       
   { 
-   var ID =$(this).attr('data-id');
-   $.ajax({
-      url : 'crud_rdv/view-rdv.php',
-      method:'POST',
-      dataType:'JSON',
-      data:{ID:ID},
-      success:function (data) 
-      {
-        $('#form34').val(data[5]);
-        $('#Update').modal('show');
-      }
-    })
-  });
+    get_rec();
+    function get_rec() 
+    {
+      $(document).on('click','#btn_show',function() 
+      { 
+       var ID =$(this).attr('data-id');
+       $.ajax({
+          url : 'crud_rdv/view_rdv.php',
+          method:'POST',
+          dataType:'JSON',
+          data:{ID:ID},
+          success:function (data) 
+          {
+            $('#form34').val(data[5]);
+            $('#Update').modal('show');
+          }
+        })
+      });
 
-}
+    }
+  });
 
 </script>
 <!---------------------------update modal-------------------------------->
@@ -229,17 +259,35 @@ while( $rows = mysqli_fetch_assoc($resul) ) {
 <tr>
 <td><?php echo $i=$i+1; ?></td>
 <td><?php echo $rows["id_rdv"]; ?></td>
-<td><?php echo $rows["date"]; ?></td>
-<td class="td" ><?php echo $rows["type_analyse"]?></td>
-<td><?php echo $rows["ord"]?></td>
+<td contentEditable='true' class='edit' id='date.<?php echo $rows["id_rdv"];?>'><?php echo $rows["date"];?></td>
+<td contenteditable="true" class='edit' id='type_analyse.<?php echo $rows["id_rdv"];?>'><?php echo $rows["type_analyse"];?>
+
+                </td>
+<td><a href="" data-toggle="modal" data-target="#myModal<?php echo $rows['id_rdv']; ?>" ><?php echo $rows["ord"]?></a></td>
 <td><?php echo $rows["id_patient"]?></td>
 <td><?php echo $rows["nom_patient"]?></td>
 <td><?php echo $rows["prenom_patient"]?></td>
 <td><?php echo $rows["email"]?></td>
-<td><button  id="btn_show" data-id="<?php echo $rows["id_patient"]?>" data-toggle="modal" data-target="#Update"class="btn btn-danger">réfuser</button></td>
+<td><button  id="btn_show" data-id="<?php echo $rows["id_patient"]?>"class="btn btn-danger">réfuser</button></td>
 <!-- Button trigger modal -->
 <!-- Modal -->
 </tr>
+  <!-------------------------------------------modal ordonnance--------------->
+  <div id="myModal<?php echo $rows['id_rdv'];?>" class="modal fade" role="dialog">
+        <div class="modal-dialog">
+            <div class="modal-content">
+            <div class="modal-header">
+               <button type="button" class="close" data-dismiss="modal">&times;</button>
+                  <h4 class="modal-title">Details</h4>
+              </div>
+              <div class="modal-body">
+               <h3> <img style="width: 100%;height: 100%;" src="ordonnances/<?php echo $rows['ord']; ?>" ></h3>
+              </div>
+          </div>
+        </div>
+      </div>
+  <!-------------------------------------------modal ordonnance--------------->
+
 <?php
 
 }
@@ -456,7 +504,37 @@ $(function(){
 })    
     
 
-      </script>
+</script>
+<script type="text/javascript">
+  $(document).ready(function(){
+ 
+ // Add Class
+ $('.edit').click(function(){
+  $(this).addClass('editMode');
+ });
 
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+ // Save data
+ $(".edit").focusout(function(){
+  $(this).removeClass("editMode");
+  var id = this.id;
+  var split_id = id.split(".");
+  var date = split_id[0];
+  var edit_id = split_id[1];
+  var value = $(this).text();
+
+  $.ajax({
+   url: 'update.php',
+   type: 'post',
+   data: { field:date, value:value, id:edit_id },
+   success:function(data){
+    console.log(data);
+   }
+  });
+ 
+ });
+
+});
+</script>
+
+
 </html>

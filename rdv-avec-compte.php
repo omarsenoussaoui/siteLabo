@@ -69,34 +69,8 @@ if (isset($_SESSION['nom_patient'])) {
 .ucfirst($_SESSION['nom_patient'])." ". ucfirst($_SESSION['prenom_patient'])." Si vous voulez Prendre un RENDEZ-VOUS Remplissez ce formulaire".
  "</h1> ";
     ?>
-
-
-  <?php 
-}else
-{
-header("location:login-patient.php");
-}
-if (isset($_POST['reserver'])) 
-{
-  $id_patient=$_SESSION['id'];
-  $datte= $_POST['datte'];
-  $timme= $_POST['timme'];
-$q="INSERT INTO `rdv`(`id_rdv`, `date`, `time`, `type_analyse`, `ord`, `id_patient`) VALUES ('','$datte','$timme','BIOCHEMIE','','$id_patient')";
- if (mysqli_query($conn,$q)) 
- {
-   echo "réservé";
- }
- else
-  {
-    echo "non";
-  }
-
-
-}
-
- ?>
  </div>
-			<form class="form-detail" method="post" id="myform">
+			<form class="form-detail" method="post" id="myform" enctype="multipart/form-data">
 				<div class="form-right">
 					<div class="form-right">
 					<h2>INFORMATION POUR RENDEZ-VOUS</h2>
@@ -212,3 +186,35 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 
 </style>
 </html>
+
+
+ <?php 
+          /*ajouter annonce*/
+          
+if (isset($_POST['reserver'])) 
+{
+  $id_patient=$_SESSION['id'];
+  $datte= $_POST['datte'];
+  $timme= $_POST['timme'];
+  $ord = $_FILES['ord'];
+  $filetmp = $ord['tmp_name'];/*chemin*/
+  $filename= $ord['name'];/*nom*/
+  $fileext=explode('.',$filename);
+  $filecheck = strtolower(end($fileext));
+  $fileextstored = array('png','jpg');
+  if (in_array($filecheck,$fileextstored)) 
+  {
+    $distinationfile='ordonnances/'.$filename;
+    move_uploaded_file($filetmp, $distinationfile);
+  $q="INSERT INTO `rdv`(`id_rdv`, `date`, `time`, `type_analyse`, `ord`, `id_patient`) VALUES ('','$datte','$timme','','$filename','$id_patient')";
+       if (mysqli_query($conn,$q))
+       {
+         echo "<script> alert('La saisie est succée'); </script> ";
+       }
+  }else
+  {
+        $errreur="ce fichier n'est pas une image";
+  }
+}
+}
+?>

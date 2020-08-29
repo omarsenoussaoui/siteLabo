@@ -76,8 +76,7 @@ function make_slides($connect)
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <meta name="viewport" content="initial-scale=1, maximum-scale=1">
    <meta name="viewport" content="width=device-width, initial-scale=1">
-   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-   <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+   <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
    <!-- Site Metas -->
    <title>MSC Lab</title>
    <meta name="keywords" content="">
@@ -98,9 +97,6 @@ function make_slides($connect)
    <link rel="stylesheet" href="css/responsive.css">
    <!-- Custom CSS -->
    <link rel="stylesheet" href="css/custom.css">
-   <!-- Modernizer for Portfolio -->
-   <script src="js/modernizer.js"></script>
-   <!-- [if lt IE 9] -->
    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" />
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
@@ -121,7 +117,7 @@ function make_slides($connect)
                   </div>
           
                   <div id="navbar" class="navbar-collapse collapse">
-                  <a class="navbar-brand" href="index.php"><img src="images/logo-2.png" alt="image"></a>
+                  <a class="navbar-brand" href="index.php"><img src="images/logoo.png" alt="image"></a>
                      <ul class="nav navbar-nav">
                      
                         <li><a style="font-size: 20px;font-family: Arial"  class="active"  href="index.php">Accueil</a></li>
@@ -182,7 +178,7 @@ function make_slides($connect)
       <div id="about" class="section wow fadeIn">
          <div class="container">
             <div class="heading">
-               <span class="icon-logo"><img src="images/icon-logo-2.png" alt="#"></span>
+               <span class="icon-logo"><img src="images/icon-logo.png" alt="#"></span>
                <h2>Laboratoire d'Analyse Médicale </h2>
             </div>
             <!-- end title -->
@@ -347,9 +343,6 @@ function make_slides($connect)
       </div>
       <!-- end copyrights -->
       <a href="#navbar" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
-      <!-- all js files -->
-      <script src="js/all.js"></script>
-      <!-- all plugins -->
       <script src="js/custom.js"></script>
       <script type="text/javascript">
         /* When the user clicks on the button, 
