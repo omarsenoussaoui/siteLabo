@@ -93,9 +93,10 @@ text-align: left;
 .show {display: block;
 }
 </style>
+<p id="message_envoyé"></p>
 </header>
 <!-----------------------------------modal update--------------->
-<div class="modal fade" id="Update" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+<div class="modal fade" id="sendMessage" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
   aria-hidden="true">
   <div class="modal-dialog" role="document">
     <div class="modal-content">
@@ -105,25 +106,19 @@ text-align: left;
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
+      
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
           <label data-error="wrong" data-success="right" for="form34">Numéro de téléphone   </label>
-          <input type="text" id="form34" class="form-control validate">
+          <input type="text" id="num" class="form-control validate">
         </div>
-
-        <div class="md-form mb-5">
-          <label data-error="wrong" data-success="right" for="form32">Sujet</label>
-          <input type="text" id="form32" class="form-control validate">
-        </div>
-
         <div class="md-form">
           <label data-error="wrong" data-success="right" for="form8">Message</label>
-          <textarea type="text" id="form8" class="md-textarea form-control" rows="4"></textarea>
+          <textarea type="text" id="message" class="md-textarea form-control" rows="4"></textarea>
         </div>
-
       </div>
       <div class="modal-footer d-flex justify-content-center">
-        <center><button class="btn btn-success">Envoyer</button></center>
+        <center><button  id="send" class="btn btn-success">Envoyer</button></center>
       </div>
     </div>
   </div>
@@ -135,6 +130,7 @@ text-align: left;
 $(document).ready(function ()       
   { 
     get_rec();
+    envoyer_message();
     function get_rec() 
     {
       $(document).on('click','#btn_show',function() 
@@ -147,8 +143,28 @@ $(document).ready(function ()
           data:{ID:ID},
           success:function (data) 
           {
-            $('#form34').val(data[5]);
-            $('#Update').modal('show');
+            $('#num').val(data[5]);
+            $('#sendMessage').modal('show');
+          }
+        })
+      });
+    }
+
+    function envoyer_message() 
+    {
+      $(document).on('click','#send',function() 
+      { 
+        var num = $("#num").val();
+        var message = $("#message").val();
+        $.ajax({
+          url :'envoyer_message/send.php',
+          method : 'POST',
+          data : {num:num,
+                  message:message
+          },
+          success:function(data) {
+           $('#message_envoyé').html(data);
+           $('#sendMessage').modal('hide');
           }
         })
       });
@@ -523,7 +539,7 @@ $(function(){
   var value = $(this).text();
 
   $.ajax({
-   url: 'update.php',
+   url: 'update-analyse.php',
    type: 'post',
    data: { field:date, value:value, id:edit_id },
    success:function(data){

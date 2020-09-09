@@ -459,7 +459,6 @@ function delete_rec()
             { 
               $('#deleteModal').modal('hide');
               $('#delete_message').html(data);
-              window.location.reload();
             }
       })
       })
