@@ -78,7 +78,7 @@ function make_slides($connect)
    <meta name="viewport" content="width=device-width, initial-scale=1">
    <link rel="stylesheet" type="text/css" href="css/font-awesome.min.css">
    <!-- Site Metas -->
-   <title>MSC Lab</title>
+   <title>E-LAB</title>
    <meta name="keywords" content="">
    <meta name="description" content="">
    <meta name="author" content="">
@@ -103,43 +103,45 @@ function make_slides($connect)
 
 
    </head>
-   <body style="font-size: 20px;font-family: Arial"  class="clinic_version">
+   <body style="font-size: 20px;font-family: 'Poppins', sans-serif; "  class="clinic_version">
       <!-- LOADER -->
-      
+        
+
+<!-- http://www.astray.com/static/earth-huge.png -->
       <!-- END LOADER -->
-      <header>
-         
+      <header id="home">
          <div class="header-bottom wow fadeIn">
             <div class="container">
+              <a class="navbar-brand" href="index.php"><img style="height: 30px;" src="images/logo-finalle.png" alt="image"></a>
                <nav class="main-menu">
                   <div class="navbar-header">
                      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i class="fa fa-bars" aria-hidden="true"></i></button>
                   </div>
           
                   <div id="navbar" class="navbar-collapse collapse">
-                  <a class="navbar-brand" href="index.php"><img src="images/logoo.png" alt="image"></a>
+                  
                      <ul class="nav navbar-nav">
                      
-                        <li><a style="font-size: 20px;font-family: Arial"  class="active"  href="index.php">Accueil</a></li>
+                        <li><a style="font-size: 20px;"  class="active"  href="index.php">Accueil</a></li>
                        
-                        <li><a style="font-size: 20px;font-family: Arial" data-scroll href="">Services</a></li>
-                        <li><a style="font-size: 20px;font-family: Arial"  dstyle="font-size: 20px;font-family: Arial"ata-scroll href="contact.php" target="_blanck">Contact</a></li>
-                        <li><a style="font-size: 20px;font-family: Arial"data-scroll href="signup1.php">Rendez-Vous</a></li>
+                        <li><a style="font-size: 20px;" data-scroll href="nos-serv.php">Services</a></li>
+                        <li><a style="font-size: 20px;"  dstyle="font-size: 20px;"ata-scroll href="contact.php" target="_blanck">Contact</a></li>
+                        <li><a style="font-size: 20px;"data-scroll href="signup1.php">Rendez-Vous</a></li>
                         <li> <?php if (!isset($_SESSION['nom_patient'])) {
                           
                         ?>
-                          <a onclick="myFunction()" onmouseover="myFunction()" class="dropbtn" style="font-size: 20px;font-family: Arial"  data-scroll >Connexion </a>
+                          <a onclick="myFunction()" onmouseover="myFunction()" class="dropbtn" style="font-size: 20px;font-family: "  data-scroll >Connexion </a>
               <div class="dropdown">
                 
                 <div  id="myDropdown" class="dropdown-content">
-                  <a  href="signup2.php" target="_blanck" style="font-size: 20px;font-family: Arial" data-scroll>Connectez </a>
-                  <a data-scroll href="creez un compte.php " style="font-size: 20px;font-family: Arial">Inscription</a>
+                  <a  href="signup2.php" target="_blanck" style="font-size: 20px;font-family: " data-scroll>Connectez </a>
+                  <a data-scroll href="creez un compte.php " style="font-size: 20px;font-family: ">Inscription</a>
                 </div>
               </div>
             </li> <?php 
             }else{
-              echo "<li><a style='font-size: 20px;font-family: Arial'data-scroll href='mon-comptte.php'>Mon compte</a></li>";
-              echo "<li><a style='font-size: 20px;font-family: Arial'data-scroll href='logout.php'>Logout</a></li>";
+              echo "<li><a style='font-size: 20px;font-family: 'data-scroll href='compte_rdv.php'>Mon compte</a></li>";
+              echo "<li><a style='font-size: 20px;font-family: 'data-scroll href='logout.php'>Logout</a></li>";
             }
              ?>
             
@@ -156,6 +158,7 @@ function make_slides($connect)
       </header>
 <br></br>
 <div  class="container">
+  <div >
    <div  id="dynamic_slide_show" class="carousel slide" data-ride="carousel">
     <ol class="carousel-indicators">
     <?php echo make_slide_indicators($connect); ?>
@@ -173,21 +176,24 @@ function make_slides($connect)
     </a>
 
    </div>
+  <div>
+    
   </div>
 
       <div id="about" class="section wow fadeIn">
          <div class="container">
             <div class="heading">
                <span class="icon-logo"><img src="images/icon-logo.png" alt="#"></span>
-               <h2>Laboratoire d'Analyse Médicale </h2>
+               <h2>Laboratoire d'Analyses Médicales</h2>
             </div>
             <!-- end title -->
             <div class="row">
                <div class="col-md-6">
                   <div class="message-box">
-                     <h2>Notre Laboratoire</h2>
-                     <p class="lead">lam7a 3la labo ta3na</p>
-                     <a href="#services" data-scroll class="btn btn-light btn-radius btn-brd grd1 effect-1">Plus d'Infos</a>
+                     <h4>Laboratoire d'Analyses Médicales</h4>
+                     <h2>DR. Boudideche</h2>
+                     <p class="lead"></p>
+                     <a href="page-labo.php" data-scroll class="btn btn-light btn-radius btn-brd grd1 effect-1">Learn More</a>
                   </div>
                   <!-- end messagebox -->
                </div>
@@ -195,12 +201,143 @@ function make_slides($connect)
                <div class="col-md-6">
                   <div class="post-media wow fadeIn">
                      <img src="images/about_03.jpg" alt="" class="img-responsive">
-                    
+                     <a href="http://www.youtube.com/watch?v=nrJtHemSPW4" data-rel="prettyPhoto[gal]" class="playbutton"><i class="flaticon-play-button"></i></a>
                   </div>
                   <!-- end media -->
                </div>
                <!-- end col -->
             </div>
+            <!-- end row -->
+            <hr id="hr23" class="hr1">
+            <div class="row">
+              <div class="heading">
+               <span class="icon-logo"><img src="images/icon-logo.png" alt="#"></span>
+               <h2>Galerie </h2>
+            </div>
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="service-widget">
+                     <div class="post-media wow fadeIn">
+                        <a href="images/clinic_01.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                        <img style="height: 100%;" src="images/salle prele1.jpg" alt="" class="img-responsive">
+                     </div>
+                     <h3>Salle de prélevement 1</h3>
+                  </div>
+                  <!-- end service -->
+               </div>
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="service-widget">
+                     <div class="post-media wow fadeIn">
+                        <a href="images/clinic_02.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                        <img src="images/salle prele2.jpg" alt="" class="img-responsive">
+                     </div>
+                     <h3>Salle de prélevement 2</h3>
+                  </div>
+                  <!-- end service -->
+               </div>
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="service-widget">
+                     <div class="post-media wow fadeIn">
+                        <a href="images/clinic_03.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                        <img style="height: 165px;" src="images/images (1).jpg" alt="" class="img-responsive">
+                     </div>
+                     <h3>Reception</h3>
+                  </div>
+                  <!-- end service -->
+               </div>
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="service-widget">
+                     <div class="post-media wow fadeIn">
+                        <a href="images/clinic_01.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                        <img style="height: 165px;" src="images/salle analyse2.jpg" alt="" class="img-responsive">
+                     </div>
+                     <h3>Salle d'Analyses</h3>
+                  </div>
+                  <!-- end service -->
+               </div>
+            </div>
+            <br>
+            <!-- end row -->
+            <div class="row">
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="service-widget">
+                     <div class="post-media wow fadeIn">
+                        <a href="images/clinic_01.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                        <img style="height: 165px;" src="images/salle analyse1.jpg" alt="" class="img-responsive">
+                     </div>
+                     <h3>Salle d'Analyses</h3>
+                  </div>
+                  <!-- end service -->
+               </div>
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="service-widget">
+                     <div class="post-media wow fadeIn">
+                        <a href="images/clinic_02.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                        <img style="height: 165px;" src="images/salle attente.jpg" alt="" class="img-responsive">
+                     </div>
+                     <h3>Salle d'Attente</h3>
+                  </div>
+                  <!-- end service -->
+               </div>
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="service-widget">
+                     <div class="post-media wow fadeIn">
+                        <a href="images/clinic_03.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                        <img style="height: 165px;" src="images/clinic_03.jpg" alt="" class="img-responsive">
+                     </div>
+                     <h3>laboratoire d'analyses médicales </h3>
+                  </div>
+                  <!-- end service -->
+               </div>
+               <div class="col-md-3 col-sm-6 col-xs-12">
+                  <div class="service-widget">
+                     <div class="post-media wow fadeIn">
+                        <a href="images/clinic_01.jpg" data-rel="prettyPhoto[gal]" class="hoverbutton global-radius"><i class="flaticon-unlink"></i></a>
+                        <img src="images/clinic_01.jpg" alt="" class="img-responsive">
+                     </div>
+                     <h3>Digital Control Center</h3>
+                  </div>
+                  <!-- end service -->
+               </div>
+            </div>
+            <!-- end row -->
+         </div>
+         <!-- end container -->
+      </div>
+
+
+
+
+
+      <div id="doctors" class="parallax section db" data-stellar-background-ratio="0.4" style="background:#fff;" data-scroll-id="doctors" tabindex="-1">
+        <div class="container">
+    
+    <div class="heading">
+               <span class="icon-logo"><img src="images/icon-logo.png" alt="#"></span>
+               <h2>Dr BOUDCHICHE</h2>
+            </div>
+
+            <div class="row dev-list text-center">
+                <div  class="col-lg-4 col-md-4 col-sm-12 col-xs-12 wow fadeIn" data-wow-duration="1s" data-wow-delay="0.4s" style="visibility: visible; animation-duration: 1s; animation-delay: 0.4s; animation-name: fadeIn; margin: 0 30%;">
+                    <div class="widget clearfix">
+                        <img src="images/doctor_01.jpg" alt="" class="img-responsive img-rounded">
+                        <div class="widget-title">
+                            <h3>Mohamed BOUDCHICHE</h3>
+                            <small>Médecine de laboratoire</small>
+                        </div>
+                        <!-- end title -->
+                        <p>Hello guys, I am Mohamed Boudchiche from Mascara. I am senior  clinical pathologist  founder of Boudideche Laboratory.</p>
+
+                        <div class="footer-social">
+                            <a href="#" class="btn grd1"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-github"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn grd1"><i class="fa fa-linkedin"></i></a>
+                        </div>
+                    </div><!--widget -->
+                </div><!-- end col -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div>
           
 
 
@@ -230,7 +367,7 @@ function make_slides($connect)
             
          </div>
       </div>
-       <footer id="footer" class="footer-area wow fadeIn" style="background-color:#1f1f2f;">
+       <footer  id="footer" class="footer-area wow fadeIn" style="overflow: hidden; background-color:#1f1f2f;">
          <div class="container">
             <div class="row">
                <div class="col-md-4">
@@ -253,56 +390,56 @@ function make_slides($connect)
                   <div class="subcriber-info">
                      <h3 style="color: white;" >Horraire</h3>
                      
-                     <table class="table table-dark">
+                     <table class="table">
             <thead>
                 <tr>
                   <th scope="col"></th>
-                  <th scope="col"></th>
-                  <th scope="col"></th>
+                  <th scope="col">Jour</th>
+                  <th scope="col">Horraire</th>
                   
                 </tr>
               </thead>
             <tbody>
                 <tr>
                   <th scope="row">1</th>
-                  <td></td>
-                  <td></td>
+                  <td>Samedi</td>
+                  <td>8.00 – 14.00</td>
 
                 </tr>
                 <tr>
                   <th scope="row">2</th>
-                  <td></td>
-                  <td></td>
+                  <td>Dimanche</td>
+                  <td>8.00 – 18.00</td>
              
                 </tr>
                 <tr>
                   <th scope="row">3</th>
-                  <td> </td>
-                  <td></td>
+                  <td>Lundi </td>
+                  <td>8.00 – 18.00</td>
 
                 </tr>
                 <tr>
                   <th scope="row">4</th>
-                  <td> </td>
-                  <td></td>
+                  <td> Mardi</td>
+                  <td>8.00 – 18.00</td>
 
                 </tr>
                 <tr>
                   <th scope="row">5</th>
-                  <td> </td>
-                  <td></td>
+                  <td>Mercredi</td>
+                  <td>8.00 – 18.00</td>
 
                 </tr>
                 <tr>
                   <th scope="row">6</th>
-                  <td> </td>
-                  <td></td>
+                  <td>Jeudi </td>
+                  <td>8.00 – 16.00</td>
 
                 </tr>
                 <tr>
                   <th scope="row">7</th>
-                  <td> </td>
-                  <td></td>
+                  <td>Vendred </td>
+                  <td>Fermé</td>
 
                 </tr>
             <tr>
@@ -317,6 +454,7 @@ function make_slides($connect)
                </div>
             </div>
          </div>
+
       </footer>
       <div class="copyright-area wow fadeIn">
          <div class="container">
@@ -342,7 +480,7 @@ function make_slides($connect)
          </div>
       </div>
       <!-- end copyrights -->
-      <a href="#navbar" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
+      <a href="#home" data-scroll class="dmtop global-radius"><i class="fa fa-angle-up"></i></a>
       <script src="js/custom.js"></script>
       <script type="text/javascript">
         /* When the user clicks on the button, 
@@ -365,6 +503,17 @@ window.onclick = function(event) {
   }
 }
 
+jQuery(window).scroll(function() {
+        if (jQuery(this).scrollTop() > 1) {
+            jQuery('.dmtop').css({
+                bottom: "75px"
+            });
+        } else {
+            jQuery('.dmtop').css({
+                bottom: "-100px"
+            });
+        }
+    });
 
       </script>
  
@@ -397,6 +546,7 @@ window.onclick = function(event) {
         .prew{
          border-radius: 10px 10px 10px 10px;
         }
+
 
    </style>
    <style type="text/css">
@@ -465,7 +615,9 @@ window.onclick = function(event) {
 
   </script>
 
-
+<script type="text/javascript">
+  
+</script>
   
 
    </body>

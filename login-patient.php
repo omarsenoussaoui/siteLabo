@@ -120,29 +120,29 @@ if (isset($_SESSION['nom_patient']) ) {
                   </div>
           
                   <div id="navbar" class="navbar-collapse collapse">
-                  <a class="navbar-brand" href="index.php"><img src="images/logoo.png" alt="image"></a>
+                   <a class="navbar-brand" href="index.php"><img style="height: 30px;" src="images/logo-finalle.png" alt="image"></a>
                      <ul class="nav navbar-nav">
                      
-                        <li><a style="font-size: 20px;font-family: Arial"  class="active"  href="index.php">Accueil</a></li>
+                        <li><a style="font-size: 20px;font-family: Poppins"  href="index.php">Accueil</a></li>
                        
-                        <li><a style="font-size: 20px;font-family: Arial" data-scroll href="">Services</a></li>
-                        <li><a style="font-size: 20px;font-family: Arial"  dstyle="font-size: 20px;font-family: Arial"ata-scroll href="contact.php" target="_blanck">Contact</a></li>
-                        <li><a style="font-size: 20px;font-family: Arial"data-scroll href="signup1.php">Rendez-Vous</a></li>
+                        <li><a style="font-size: 20px;font-family: Poppins" data-scroll href="nos-serv.php">Services</a></li>
+                        <li><a style="font-size: 20px;font-family: Poppins"  dstyle="font-size: 20px;font-family: Poppins"ata-scroll href="contact.php" target="_blanck">Contact</a></li>
+                        <li><a style="font-size: 20px;font-family: Poppins"data-scroll href="signup1.php">Rendez-Vous</a></li>
                         <li> <?php if (!isset($_SESSION['nom_patient'])) {
                           
                         ?>
-                          <a onclick="myFunction()" onmouseover="myFunction()" class="dropbtn" style="font-size: 20px;font-family: Arial"  data-scroll >Connexion </a>
+                          <a onclick="myFunction()" onmouseover="myFunction()" class="dropbtn active" style="font-size: 20px;font-family: Poppins"  data-scroll >Connexion </a>
               <div class="dropdown">
                 
                 <div  id="myDropdown" class="dropdown-content">
-                  <a  href="signup2.php" target="_blanck" style="font-size: 20px;font-family: Arial" data-scroll>Connectez </a>
-                  <a data-scroll href="creez un compte.php " style="font-size: 20px;font-family: Arial">Inscription</a>
+                  <a  href="signup2.php" target="_blanck" style="font-size: 20px;font-family: Poppins" data-scroll>Connectez </a>
+                  <a data-scroll href="creez un compte.php " style="font-size: 20px;font-family: Poppins">Inscription</a>
                 </div>
               </div>
             </li> <?php 
             }else{
-              echo "<li><a style='font-size: 20px;font-family: Arial'data-scroll href='mon-comptte.php'>Mon compte</a></li>";
-              echo "<li><a style='font-size: 20px;font-family: Arial'data-scroll href='logout.php'>Logout</a></li>";
+              echo "<li><a style='font-size: 20px;font-family: Poppins'data-scroll href='mon-comptte.php'>Mon compte</a></li>";
+              echo "<li><a style='font-size: 20px;font-family: Poppins'data-scroll href='logout.php'>Logout</a></li>";
             }
              ?>
             
@@ -167,7 +167,7 @@ if (isset($_SESSION['nom_patient']) ) {
 					<img src="images/img-0001.png" alt="IMG">
 				</div>
 				<form class="login100-form validate-form" action="" method="post" onsubmit="return verifForm(this)">
-					<span class="login100-form-title"style="font-size: 20px;font-family: Arial"  >
+					<span class="login100-form-title"style="font-size: 20px;font-family: Poppins"  >
 						PATIENT
 					</span>
 
@@ -189,12 +189,12 @@ if (isset($_SESSION['nom_patient']) ) {
 					</div >
 					<input style="margin-left: 20px;" type="checkbox" name="remember"> Remember Me
 					<div class="container-login100-form-btn">
-						<button style="font-size: 20px;font-family: Arial" name="Login-patient"  class="login100-form-btn">
-							Login
+						<button style="font-size: 20px;font-family: Poppins" name="Login-patient"  class="login100-form-btn">
+							Se connecter
 						</button>
 					</div>
 					<div class="text-center p-t-136">
-						<a class="txt2" href="creez un compte.php" style="font-size: 20px;font-family: Arial"  >
+						<a class="txt2" href="creez un compte.php" style="font-size: 20px;font-family: Poppins"  >
 							Creez un Compt chez-nous
 							<i class="fa fa-long-arrow-right m-l-5" aria-hidden="true"></i>
 						</a>

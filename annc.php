@@ -39,7 +39,7 @@ function make_slide_indicators($connect)
 }
 
 function make_slides($connect)
-{
+
  $output = '';
  $count = 0;
  $result = make_query($connect);
@@ -109,7 +109,7 @@ function make_slides($connect)
   <script src="js/bootstrap.min.js"></script>
    </head>
  <body>
-        <header>
+      <header>
          <div class="header-bottom wow fadeIn">
             <div class="container">
                <nav class="main-menu">
@@ -119,20 +119,15 @@ function make_slides($connect)
                  
                   <div id="navbar" class="navbar-collapse collapse">
                      <ul class="nav navbar-nav">
-                        <li><a style="font-size: 20px;font-family: Arial"  href="tousrdv.php">Tous les RDV</a></li>
-                        <li><a style="font-size: 20px;font-family: Arial" data-scroll href="rdv-auj.php">RDV d'aujourd'hui</a></li>
-                        <li> <a onclick="myFunction()" onmouseover="myFunction()" class="dropbtn" style="font-size: 20px;font-family: Arial"  data-scroll >Gestion des membre </a>
-                                       <div class="dropdown">
-                                         
-                                         <div  id="myDropdown" class="dropdown-content">
-                                           <a  style="font-size: 20px;font-family: Arial" data-scroll href="gestion-patient.php">Gestion des patient</a>
-                                           <a data-scroll href="gestion-admin.php" style="font-size: 20px;font-family: Arial">Gestion des ADMINS</a>
-                                         </div>
-                                       </div>
-                                    </li> 
-                        <li><a style="font-size: 20px;font-family: Arial"  dstyle="font-size: 20px;font-family: Arial"ata-scroll href="messages.php" >les messages</a></li>
-                        <li><a style="font-size: 20px;font-family: Arial"data-scroll href="">Nos service</a></li> 
-                        <li><a style="font-size: 20px;font-family: Arial"data-scroll href="logout.php">Log Out</a></li>
+                        <li><button style="width: 50px; height: 50px;" type="button" id="sidebarCollapse" class="btn btn-info navbar-btn">
+                                <i class="fa fa-align-justify fa-2x"></i>
+                                <span></span>
+                            </button></li>
+                         <li style="padding-left: 10px"><a style="font-size: 20px; "href="page-admin.php">Admin</a></li>
+                        <li><a style="font-size: 20px;" class=""  href="tousrdv.php">Tous les RDV</a></li>
+                        <li><a style="font-size: 20px;" data-scroll href="rdv-auj.php">RDV d'aujourd'hui</a>
+                        <li><a style="font-size: 20px;"data-scroll href="services.php">Nos service</a></li> 
+                        <li><a style="font-size: 20px;"data-scroll href="logout.php">Déconnexion</a></li>
                      </ul>
                     
                   </div>
@@ -141,208 +136,52 @@ function make_slides($connect)
             </div>
          </div>
       </header>
-      <style type="text/css">
-                      
-              .dropdown-content {
-                background-color: #1a75ff;
-                display: none;
-                position: absolute;
-                min-width: 160px;
-                overflow: auto;
-                z-index: 1;
 
-              }
-
-              .dropdown-content a {
-                  
-                  text-decoration: none;
-                  display: block;
-                  text-align: left;
-              }
-              .show {display: block;}
-
-
-
-
-
-
-              @import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
+<style type="text/css">
+@import url('https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 @media(min-width:768px) {
     body {
-        margin-top: 50px;
+        margin-top: 80px;
     }
     /*html, body, #wrapper, #page-wrapper {height: 100%; overflow: hidden;}*/
 }
+ </style>
+<div class="wrapper">
+            <!-- Sidebar Holder -->
+            <nav id="sidebar">
+                
+                <ul class="list-unstyled components">
+                    <li class="">
+                        <a href="#homeSubmenu" data-toggle="collapse" aria-expanded="false">
+                            <i class="glyphicon glyphicon-user"></i>
+                            Membres
+                        </a>
+                        <ul class="collapse list-unstyled" id="homeSubmenu">
+                            <li><a href="gestion-admin.php">Admins</a></li>
+                            <li><a href="gestion-patient.php">Patients</a></li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="messages.php">
+                            <i class="fa fa-envelope-open"></i>
+                            Messages
+                        </a>
+                      
+                    </li>
+                    <li>
+                        <a class="active2" href="annc.php">
+                            <i class="fa fa-bullhorn"></i>
+                            Annonces
+                        </a>
+                    </li>
+                    
+                </ul>
+            </nav>
 
-#wrapper {
-    padding-left: 0;    
-}
-
-#page-wrapper {
-    width: 100%;        
-    padding: 0;
-    background-color: #fff;
-}
-
-@media(min-width:768px) {
-    #wrapper {
-        padding-left: 225px;
-    }
-
-    #page-wrapper {
-        padding: 22px 10px;
-    }
-}
-
-/* Top Navigation */
-
-.top-nav {
-    padding: 0 15px;
-}
-
-.top-nav>li {
-    display: inline-block;
-    float: left;
-}
-
-.top-nav>li>a {
-    padding-top: 20px;
-    padding-bottom: 20px;
-    line-height: 20px;
-    color: #fff;
-}
+            <!-- Page Content Holder -->
+            <div id="content">
 
 
-
-.top-nav>.open>.dropdown-menu {
-    float: left;
-    position: absolute;
-    margin-top: 0;
-    /*border: 1px solid rgba(0,0,0,.15);*/
-    border-top-left-radius: 0;
-    border-top-right-radius: 0;
-    background-color: #fff;
-    -webkit-box-shadow: 0 6px 12px rgba(0,0,0,.175);
-    box-shadow: 0 6px 12px rgba(0,0,0,.175);
-}
-
-.top-nav>.open>.dropdown-menu>li>a {
-    white-space: normal;
-}
-
-/* Side Navigation */
-
-@media(min-width:768px) {
-    .side-nav {
-        position: fixed;
-        top: 60px;
-        left: 225px;
-        width: 225px;
-        margin-left: -225px;
-        border: none;
-        border-radius: 0;
-        border-top: 1px rgba(0,0,0,.5) solid;
-        overflow-y: auto;
-        background-color: #222;
-        /*background-color: #5A6B7D;*/
-        bottom: 0;
-        overflow-x: hidden;
-        padding-bottom: 40px;
-    }
-
-    .side-nav>li>a {
-        width: 225px;
-        border-bottom: 1px rgba(0,0,0,.3) solid;
-    }
-
-    .side-nav li a:hover,
-    .side-nav li a:focus {
-        outline: none;
-        background-color: #39b49a !important;
-    }
-}
-
-.side-nav>li>ul {
-    padding: 0;
-    border-bottom: 1px rgba(0,0,0,.3) solid;
-}
-
-.side-nav>li>ul>li>a {
-    display: block;
-    padding: 10px 15px 10px 38px;
-    text-decoration: none;
-    /*color: #999;*/
-    color: #fff;    
-}
-
-.side-nav>li>ul>li>a:hover {
-    color: #fff;
-}
-
-.navbar .nav > li > a > .label {
-  -webkit-border-radius: 50%;
-  -moz-border-radius: 50%;
-  border-radius: 50%;
-  position: absolute;
-  top: 14px;
-  right: 6px;
-  font-size: 10px;
-  font-weight: normal;
-  min-width: 15px;
-  min-height: 15px;
-  line-height: 1.0em;
-  text-align: center;
-  padding: 2px;
-}
-
-.navbar .nav > li > a:hover > .label {
-  top: 10px;
-}
-
-.navbar-brand {
-    padding: 5px 15px;
-}
-
-
-
-                     </style>
-<script type="text/javascript">
-         /* When the user clicks on the button, 
-toggle between hiding and showing the dropdown content */
-function myFunction() {
-  document.getElementById("myDropdown").classList.toggle("show");
-}
-
-// Close the dropdown if the user clicks outside of it
-window.onclick = function(event) {
-  if (!event.target.matches('.dropbtn')) {
-    var dropdowns = document.getElementsByClassName("dropdown-content");
-    var i;
-    for (i = 0; i < dropdowns.length; i++) {
-      var openDropdown = dropdowns[i];
-      if (openDropdown.classList.contains('show')) {
-        openDropdown.classList.remove('show');
-      }
-    }
-  }
-}
-
-$(function(){
-    $('[data-toggle="tooltip"]').tooltip();
-    $(".side-nav .collapse").on("hide.bs.collapse", function() {                   
-        $(this).prev().find(".fa").eq(1).removeClass("fa-angle-right").addClass("fa-angle-down");
-    });
-    $('.side-nav .collapse').on("show.bs.collapse", function() {                        
-        $(this).prev().find(".fa").eq(1).removeClass("fa-angle-down").addClass("fa-angle-right");        
-    });
-})    
-    
-
-      </script>
-
-
-</html>
- <br>
 <div class="text-center">
   <?php  if (isset($errreur)) {
     echo $errreur;
@@ -459,16 +298,16 @@ while( $rows = mysqli_fetch_assoc($resul) ) {
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header text-center">
-        <h4 class="modal-title w-100 font-weight-bold">Delete Data</h4>
+        <h4 class="modal-title w-100 font-weight-bold">Supprimer Annonce</h4>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body mx-3">
         <div class="md-form mb-5">
-        	<h1>Do you want to delete ?</h1>
-        <button class="btn btn-success" id="btn_delete">Delete</button>
-        <button type="button" class="btn btn-danger" id="close3" data-dismiss="modal">Close</button>
+        	<h1>Voulez-vous la suppimer ?</h1>
+        <button class="btn btn-success" id="btn_delete">supprimer</button>
+        <button type="button" class="btn btn-danger" id="close3" data-dismiss="modal">annuler</button>
         </div>
       </div>
       
@@ -488,6 +327,9 @@ while( $rows = mysqli_fetch_assoc($resul) ) {
 </div>
 </tbody>
 </table>
+                <!--<div class="line"></div>-->
+            </div>
+
  
 </div>
   <br />
@@ -561,7 +403,7 @@ while( $rows = mysqli_fetch_assoc($resul) ) {
             $titre=$_POST['titre'];
             $description=$_POST['description'];
             $files = $_FILES['file'];
-            echo $description;
+            //echo $description;
             $filetmp = $files['tmp_name'];/*chemin*/
             $filename= $files['name'];/*nom*/
             $fileext=explode('.',$filename);
@@ -744,3 +586,265 @@ function delete_rec()
             }
               ?> 
 </html>
+<!--style of slidbar-->
+<style type="text/css">
+  /*
+    DEMO STYLE
+*/
+@import "https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700";
+
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: #fafafa;
+}
+
+p {
+    font-family: 'Poppins', sans-serif;
+    font-size: 1.1em;
+    font-weight: 300;
+    line-height: 1.7em;
+    color: #999;
+}
+
+a, a:hover, a:focus {
+    color: inherit;
+    text-decoration: none;
+    transition: all 0.3s;
+}
+
+.navbar {
+    padding: 15px 10px;
+    background: #fff;
+    border: none;
+    border-radius: 0;
+    margin-bottom: 40px;
+    box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-btn {
+    box-shadow: none;
+    outline: none !important;
+    border: none;
+}
+
+.line {
+    width: 100%;
+    height: 1px;
+    border-bottom: 1px dashed #ddd;
+    margin: 40px 0;
+}
+
+i, span {
+    display: inline-block;
+}
+
+/* ---------------------------------------------------
+    SIDEBAR STYLE
+----------------------------------------------------- */
+.wrapper {
+    display: flex;
+    align-items: stretch;
+}
+
+#sidebar {
+    margin-top: -20px;
+    min-width: 250px;
+    max-width: 250px;
+    background: #7386D5;
+    color: #fff;
+    transition: all 0.3s;
+}
+#sidebar.active {
+    min-width: 80px;
+    max-width: 80px;
+    text-align: center;
+}
+
+#sidebar.active .sidebar-header h3, #sidebar.active .CTAs {
+    display: none;
+}
+
+#sidebar.active .sidebar-header strong {
+    display: block;
+}
+
+#sidebar ul li a {
+    text-align: left;
+}
+
+#sidebar.active ul li a {
+    padding: 20px 10px;
+    text-align: center;
+    font-size: 10px;
+}
+
+#sidebar.active ul li a i {
+    margin-right:  0;
+    display: block;
+    margin-bottom: 5px;
+    font-size:35px;
+}
+
+#sidebar.active ul ul a {
+    padding: 10px !important;
+}
+
+#sidebar.active a[aria-expanded="false"]::before, #sidebar.active a[aria-expanded="true"]::before {
+    top: auto;
+    bottom: 5px;
+    right: 50%;
+    -webkit-transform: translateX(50%);
+    -ms-transform: translateX(50%);
+    transform: translateX(50%);
+}
+
+#sidebar .sidebar-header {
+    padding: 20px;
+    background: #6d7fcc;
+}
+
+
+#sidebar ul.components {
+    padding: 20px 0;
+    border-bottom: 1px solid #47748b;
+}
+
+#sidebar ul li a {
+    padding: 10px;
+    font-size: 20px;
+    display: block;
+}
+.active2{
+      color: #7386D5;
+    background: #fff;
+}
+#sidebar ul li a:hover {
+    color: #7386D5;
+    background: #fff;
+}
+#sidebar ul li a i {
+    margin-right: 10px;
+}
+
+#sidebar ul li.active > a, a[aria-expanded="true"] {
+    color: #fff;
+    background: #6d7fcc;
+}
+
+
+a[data-toggle="collapse"] {
+    position: relative;
+}
+
+a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+    content: '\e259';
+    display: block;
+    position: absolute;
+    right: 15px;
+    font-family: 'Glyphicons Halflings';
+    font-size: 15px;
+}
+a[aria-expanded="true"]::before {
+    content: '\e260';
+}
+
+
+ul ul a {
+    font-size: 0.9em !important;
+    padding-left: 30px !important;
+    background: #6d7fcc;
+}
+
+ul.CTAs {
+    padding: 20px;
+}
+
+ul.CTAs a {
+    text-align: center;
+    font-size: 0.9em !important;
+    display: block;
+    border-radius: 5px;
+    margin-bottom: 5px;
+}
+
+
+
+/* ---------------------------------------------------
+    CONTENT STYLE
+----------------------------------------------------- */
+#content {
+    padding: 20px;
+    min-height: 100vh;
+    transition: all 0.3s;
+    width: 100%;
+}
+
+
+/* ---------------------------------------------------
+    MEDIAQUERIES
+----------------------------------------------------- */
+@media (max-width: 768px) {
+    #sidebar {
+        min-width: 80px;
+        max-width: 80px;
+        text-align: center;
+        margin-left: -80px !important ;
+    }
+    a[aria-expanded="false"]::before, a[aria-expanded="true"]::before {
+        top: auto;
+        bottom: 5px;
+        right: 50%;
+        -webkit-transform: translateX(50%);
+        -ms-transform: translateX(50%);
+        transform: translateX(50%);
+    }
+    #sidebar.active {
+        margin-left: 0 !important;
+    }
+
+    #sidebar .sidebar-header h3, #sidebar .CTAs {
+        display: none;
+    }
+
+    #sidebar .sidebar-header strong {
+        display: block;
+    }
+
+    #sidebar ul li a {
+        padding: 20px 10px;
+    }
+
+    #sidebar ul li a span {
+        font-size: 0.85em;
+    }
+    #sidebar ul li a i {
+        margin-right:  0;
+        display: block;
+    }
+
+    #sidebar ul ul a {
+        padding: 10px !important;
+    }
+
+    #sidebar ul li a i {
+        font-size: 1.3em;
+    }
+    #sidebar {
+        margin-left: 0;
+    }
+    #sidebarCollapse span {
+        display: none;
+    }
+}
+  
+</style>
+<!-- script slidbar-->
+
+          <script type="text/javascript">
+             $(document).ready(function () {
+                 $('#sidebarCollapse').on('click', function () {
+                     $('#sidebar').toggleClass('active');
+                 });
+             });
+         </script>

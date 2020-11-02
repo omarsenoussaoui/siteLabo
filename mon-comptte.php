@@ -49,7 +49,7 @@ if (!isset($_SESSION['nom_patient'])){
 
 
    </head>
-   <body style="font-size: 20px;font-family: Arial"  class="clinic_version">
+   <body style="font-size: 20px;font-family: Poppins"  class="clinic_version">
       <!-- LOADER -->
       
    <header>
@@ -62,29 +62,29 @@ if (!isset($_SESSION['nom_patient'])){
                   </div>
           
                   <div id="navbar" class="navbar-collapse collapse">
-                  <a class="navbar-brand" href="index.php"><img src="images/logo-2.png" alt="image"></a>
+                  <a class="navbar-brand" href="index.php"><img style="height: 30px;" src="images/logo-finalle.png" alt="image"></a>
                      <ul class="nav navbar-nav">
                      
-                        <li><a style="font-size: 20px;font-family: Arial"   href="index.php">Accueil</a></li>
+                        <li><a style="font-size: 20px;font-family: Poppins"   href="index.php">Accueil</a></li>
                        
-                        <li><a style="font-size: 20px;font-family: Arial" data-scroll href="">Services</a></li>
-                        <li><a style="font-size: 20px;font-family: Arial"  dstyle="font-size: 20px;font-family: Arial"ata-scroll href="contact.php" target="_blanck">Contact</a></li>
-                        <li><a style="font-size: 20px;font-family: Arial"data-scroll href="signup1.php">Rendez-Vous</a></li>
+                        <li><a style="font-size: 20px;font-family: Poppins" data-scroll href="">Services</a></li>
+                        <li><a style="font-size: 20px;font-family: Poppins"  dstyle="font-size: 20px;font-family: Poppins"ata-scroll href="contact.php" target="_blanck">Contact</a></li>
+                        <li><a style="font-size: 20px;font-family: Poppins"data-scroll href="signup1.php">Rendez-Vous</a></li>
                         <li> <?php if (!isset($_SESSION['nom_patient'])) {
                           
                         ?>
-                          <a onclick="myFunction()" onmouseover="myFunction()" class="dropbtn" style="font-size: 20px;font-family: Arial"  data-scroll >Connexion </a>
+                          <a onclick="myFunction()" onmouseover="myFunction()" class="dropbtn" style="font-size: 20px;font-family: Poppins"  data-scroll >Connexion </a>
               <div class="dropdown">
                 
                 <div  id="myDropdown" class="dropdown-content">
-                  <a  href="signup2.php" target="_blanck" style="font-size: 20px;font-family: Arial" data-scroll>Connectez </a>
-                  <a data-scroll href="creez un compte.php " style="font-size: 20px;font-family: Arial">Inscription</a>
+                  <a  href="signup2.php" target="_blanck" style="font-size: 20px;font-family: Poppins" data-scroll>Connectez </a>
+                  <a data-scroll href="creez un compte.php " style="font-size: 20px;font-family: Poppins">Inscription</a>
                 </div>
               </div>
             </li> <?php 
             }else{
-              echo "<li><a class='active'  style='font-size: 20px;font-family: Arial'data-scroll href='mon-compte.php'>Mon compte</a></li>";
-              echo "<li><a style='font-size: 20px;font-family: Arial'data-scroll href='logout.php'>Logout</a></li>";
+              echo "<li><a class='active'  style='font-size: 20px;font-family: Poppins'data-scroll href='mon-compte.php'>Mon compte</a></li>";
+              echo "<li><a style='font-size: 20px;font-family: Poppins'data-scroll href='logout.php'>Logout</a></li>";
             }
              ?>
             
@@ -178,7 +178,7 @@ if (mysqli_query($conn,$q))
           $_SESSION['email_patient']=$row['email'];
           $_SESSION['mot_passe']=$row['mot_passePa'];
           $_SESSION['num_tlp']=$row['num_tlp'];-->
-          <center><button style="font-size: 20px;font-family: Arial ; " type="envoyer" name="modifier" class="login100-form-btn">
+          <center><button style="font-size: 20px;font-family: Poppins ; " type="envoyer" name="modifier" class="login100-form-btn">
               Modifier
             </button></center>
 

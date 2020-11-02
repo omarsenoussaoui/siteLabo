@@ -1,3 +1,61 @@
+<?php
+session_start();
+	 $conn = mysqli_connect("localhost", "root", "");
+	 $db = mysqli_select_db($conn, "labo");
+if (isset($_POST['envoyer'])) {
+	$nom=$_POST['nom'];
+	$prenom=$_POST['prenom'];
+	$email=$_POST['email'];
+	$tlp=$_POST['tlp'];
+	$mot_passe=$_POST['mot_passe'];
+	$mot_passeC=$_POST['mot_passeC'];
+	if ($mot_passe!=$mot_passeC and (!ctype_alpha($nom) or !ctype_alpha($prenom)) ) {
+		$erreur1="les mots passe ne sont pas egaux";
+		}
+	
+	$q="INSERT INTO `patient`(`id_patient`, `nom_patient`, `prenom_patient`, `email`, `mot_passePa`, `num_tlp`) VALUES ('','$nom','$prenom','$email','$mot_passe','$tlp')";
+	
+		$_SESSION['nom_patient']=$nom;
+		$_SESSION['prenom_patient']=$prenom;
+		$_SESSION['email_patient']= $email;
+		$_SESSION['num_tlp']=$tlp;
+		$_SESSION['mot_passe'] =$mot_passe;
+		 $query  = mysqli_query($conn, "SELECT id_patient FROM patient WHERE email='$email' ");
+		 $row = $query -> fetch_assoc();
+		 $id=$row['id_patient'];
+		 $id_patient=$id;
+		  $datte= $_POST['datte'];
+		  $timme= $_POST['timme'];
+		  $ord = $_FILES['ord'];
+		  $filetmp = $ord['tmp_name'];/*chemin*/
+		  $filename= $ord['name'];/*nom*/
+		  $fileext=explode('.',$filename);
+		  $filecheck = strtolower(end($fileext));
+		  $fileextstored = array('png','jpg');
+		  if (in_array($filecheck,$fileextstored)) 
+		  {
+		    $distinationfile='ordonnances/'.$filename;
+		    move_uploaded_file($filetmp, $distinationfile);
+		  $q="INSERT INTO `rdv`(`id_rdv`, `date`, `time`, `type_analyse`, `ord`, `id_patient`) VALUES ('','$datte','$timme','','$filename','$id_patient')";
+		       if (mysqli_query($conn,$q))
+		       {
+		         echo "<script> alert('La saisie est succée'); </script> ";
+		       }
+		  }else
+		  {
+		        $errreur="ce fichier n'est pas une image";
+		  }
+		
+		/*header("location:index.php");*/
+
+	
+}
+
+
+
+
+ ?>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,33 +77,29 @@
 					<h2>INFORMATIONS GENERALES </h2>
 					<div class="form-group">
 						<div class="form-row form-row-1">
-							<input type="text" name="first_name" id="first_name" class="input-text" placeholder="Nom" required>
+							<input type="text" name="nom" id="first_name" class="input-text" placeholder="Nom" required>
 						</div>
 						<div class="form-row form-row-2">
-							<input type="text" name="last_name" id="last_name" class="input-text" placeholder="Prenom" required>
+							<input type="text" name="prenom" id="last_name" class="input-text" placeholder="Prenom" required>
 						</div>
 					</div>
 					<div class="form-row">
-						<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="E-mail">
+						<input type="text" name="email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="E-mail">
 					</div>	
 					<div class="form-row">
-						<input type="password" name="your_email" id="your_email" class="input-text" placeholder="Mot de Passe">
+						<input type="password" name="mot_passe" id="your_email" class="input-text" placeholder="Mot de Passe">
 					</div>			
 
 					<div class="form-row">
-						<input type="text" name="your_email" id="your_email" class="input-text" required pattern="[^@]+@[^@]+.[a-zA-Z]{2,6}" placeholder="Numéro de Telephone">
+						<input type="password" name="mot_passeC" id="your_email" class="input-text" required  placeholder="Confirmer Mot de passe">
+					</div>
+					<div class="form-row">
+						<input type="text" name="tlp" id="" class="input-text" required  placeholder="Numéro de Telephone">
 					</div>
 					
 					<div class="form-row form-row-2">
-							<select name="place"  >
-							    <option>Commune</option>
-							    <option value="Mascara">Mascara</option>
-							    <option value="Tighanif">Tighanif</option>
-							    <option value="Sig">Sig</option>
-							</select>
-							<span class="select-btn">
-							  	<i class="zmdi zmdi-chevron-down"></i>
-							</span>
+							
+						
 						</div>
 					
 				</div>
@@ -76,9 +130,9 @@
 						<div class="form-row form-row-1">
 							<label style="color: white;" > Scannez Votre Ordonnance SVP !</label><br><br>
 							<input type="file" style="border: 0px;" required>
-						</div>
+						</div>-->
 					<div class="form-row-last">
-						<input type="submit" name="register" class="register" value="Envoyer">
+						<input type="submit" name="envoyer" class="register" value="Envoyer">
 					</div>
 				</div>
 			</form>

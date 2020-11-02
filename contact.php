@@ -4,21 +4,25 @@ session_start();
 $conn=mysqli_connect("localhost","root","");
 mysqli_select_db($conn,"labo");
 
-if (isset($_POST['envoyer'])) {
+if (isset($_POST['envoyer'])) 
+{
   $nom=$_POST['name'];
   $email=$_POST['email'];
   $sujet =$_POST['subject'];
   $message=$_POST['message'];
  
+if (empty($nom) or empty($email) or empty($sujet) or empty($message)) 
+{
+  $erreur='remplissez tous les champs svp';
+}elseif(!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+  $emailErr = "format d'email nonvalide";
+}else{
   $q="INSERT INTO `message`(`id_msg`, `nom`, `email`, `sujet`, `message`) VALUES ('','$nom','$email','$sujet','$message')";
   if (mysqli_query($conn, $q)) {
 
 $env="votre message a été envoyé";
-  }else {
-  $env="erreur d'envoi";
-
   }
-
+  }
 }
 
 ?>
@@ -81,10 +85,61 @@ $env="votre message a été envoyé";
    <!-- [if lt IE 9] -->
 
 </head>
+<style type="text/css">
+  body {
+    font-family: 'Poppins';
+  }
+</style>
 <body>
    </head>
-   <body style="font-size: 20px;font-family: Arial"  class="clinic_version">
+   <body style="font-size: 20px; font-family: 'Poppins''Poppins' ">
+ <header id="home">
+         <div class="header-bottom wow fadeIn">
+            <div class="container">
+              <a class="navbar-brand" href="index.php"><img style="height: 30px;" src="images/logo-finalle.png" alt="image"></a>
+               <nav class="main-menu">
+                  <div class="navbar-header">
+                     <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar"><i class="fa fa-bars" aria-hidden="true"></i></button>
+                  </div>
+          
+                  <div id="navbar" class="navbar-collapse collapse">
+                  
+                     <ul class="nav navbar-nav">
+                     
+                        <li><a style="font-size: 20px;"  class=""  href="index.php">Accueil</a></li>
+                       
+                        <li><a style="font-size: 20px;" data-scroll href="nos-serv.php">Services</a></li>
+                        <li><a style="font-size: 20px;" class="active"  dstyle="font-size: 20px;"ata-scroll href="contact.php" target="_blanck">Contact</a></li>
+                        <li><a style="font-size: 20px;"data-scroll href="signup1.php">Rendez-Vous</a></li>
+                        <li> <?php if (!isset($_SESSION['nom_patient'])) {
+                          
+                        ?>
+                          <a onclick="myFunction()" onmouseover="myFunction()" class="dropbtn" style="font-size: 20px;font-family: "  data-scroll >Connexion </a>
+              <div class="dropdown">
+                
+                <div  id="myDropdown" class="dropdown-content">
+                  <a  href="signup2.php" target="_blanck" style="font-size: 20px;font-family: " data-scroll>Connectez </a>
+                  <a data-scroll href="creez un compte.php " style="font-size: 20px;font-family: ">Inscription</a>
+                </div>
+              </div>
+            </li> <?php 
+            }else{
+              echo "<li><a style='font-size: 20px;font-family: 'data-scroll href='compte_rdv.php'>Mon compte</a></li>";
+              echo "<li><a style='font-size: 20px;font-family: 'data-scroll href='logout.php'>Logout</a></li>";
+            }
+             ?>
+            
+                     </ul>
 
+                     
+                  </div>
+
+               </nav>
+            
+               
+            </div>
+         </div>
+      </header>
       
 
 
@@ -93,17 +148,21 @@ $env="votre message a été envoyé";
  if (isset($env)) {
     
    echo '<div class="alert alert-success" role="alert">'.$env.'</div>';  
+ }elseif (isset($erreur)) {
+   echo '<div class="alert alert-danger" role="alert">'.$erreur.'</div>'; 
+ }elseif(isset($emailErr)){
+  echo '<div class="alert alert-danger" role="alert">'.$emailErr.'</div>'; ;
  }
 
    ?>
 
-		<div class="container-contact1">
+		<div style="font-family: 'Poppins' Poppins;" class="container-contact1">
 			<div class="contact1-pic js-tilt" data-tilt>
 				<img src="images/img-01.png" alt="IMG">
 			</div>
 
 			<form class="contact1-form validate-form" method="post" action="" >
-				<span class="contact1-form-title">
+				<span style="font-family: 'Poppins' Poppins;" class="contact1-form-title">
 					Avez-vous un problème?           </br>Contactez-nous
 				</span>
 
@@ -129,7 +188,7 @@ $env="votre message a été envoyé";
 
 				<div class="container-contact1-form-btn">
 					<button class="contact1-form-btn" name="envoyer" type="submit">
-						<span style="font-size: 20px;font-family: Arial" >
+						<span style="font-size: 20px;font-family: 'Poppins' Poppins" >
 							Envoyer
 							<i class="fa fa-long-arrow-right" aria-hidden="true"></i>
 						</span>
@@ -212,7 +271,26 @@ window.onclick = function(event) {
 
 
       </script>
- 
+   <style type="text/css">
+                      
+              .dropdown-content {
+                background-color: #1a75ff;
+                display: none;
+                position: absolute;
+                min-width: 160px;
+                overflow: auto;
+                z-index: 1;
+
+              }
+
+              .dropdown-content a {
+                  
+                  text-decoration: none;
+                  display: block;
+                  text-align: left;
+              }
+              .show {display: block;}
+                     </style>
 
 <?php
 

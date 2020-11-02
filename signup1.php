@@ -31,7 +31,7 @@ if (isset($_SESSION['nom_patient'])) {
                 </div>
                 <div class="col" style="padding-top:10px;">
 </a>
-<a href="signup.php">
+<a href="creez un compte.php">
 <img alt="Image html" width="90%" height="90%" style="max-height:500px;max-width:500px; " src="images/sign-up-png.png" /><br><br>
 
  <div  style="color: white; padding-left: 160px;font-size: 20px; "  >Je n'ai pas de  compte  </div> 

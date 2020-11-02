@@ -24,6 +24,10 @@ if (isset($_POST['envoyer'])) {
 	{
 		$_SESSION['nom_patient']=$nom;
 		$_SESSION['prenom_patient']=$prenom;
+		$_SESSION['email_patient']= $email;
+		$_SESSION['num_tlp']=$tlp;
+		$_SESSION['mot_passe'] =$mot_passe;
+
 		header("location:index.php");
 	}
 	}

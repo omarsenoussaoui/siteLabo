@@ -56,9 +56,11 @@
     <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
 <!--===============================================================================================-->
     <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
-</head>
 
-<body class="form-v10">
+</head>
+<body>
+
+<div class="form-v10">
 	<div class="page-content">
 		<div class="form-v10-content">
             <div>
@@ -104,7 +106,7 @@ if (isset($_SESSION['nom_patient'])) {
 			</form>
 		</div>
 	</div>
-</body>
+</div>
 
 <!-- CheckBox Style -->
 
@@ -187,9 +189,9 @@ ul.ks-cboxtags li input[type="checkbox"]:focus + label {
 </style>
 </html>
 
-
+</body>
  <?php 
-          /*ajouter annonce*/
+
           
 if (isset($_POST['reserver'])) 
 {
@@ -202,15 +204,23 @@ if (isset($_POST['reserver']))
   $fileext=explode('.',$filename);
   $filecheck = strtolower(end($fileext));
   $fileextstored = array('png','jpg');
+  $date=date("y-m-d");
   if (in_array($filecheck,$fileextstored)) 
   {
     $distinationfile='ordonnances/'.$filename;
     move_uploaded_file($filetmp, $distinationfile);
+    $startime=strtotime("09:30");
+    $endtime=strtotime("15:30");
+    if (strtotime($datte) < strtotime($date) or (strtotime($timme)<$startime or strtotime($timme) > $endtime)) {
+    
+  echo "<script> alert('date ou horraire non valide'); </script> ";
+  }else{
   $q="INSERT INTO `rdv`(`id_rdv`, `date`, `time`, `type_analyse`, `ord`, `id_patient`) VALUES ('','$datte','$timme','','$filename','$id_patient')";
        if (mysqli_query($conn,$q))
        {
          echo "<script> alert('La saisie est succée'); </script> ";
        }
+     }
   }else
   {
         $errreur="ce fichier n'est pas une image";
@@ -218,3 +228,4 @@ if (isset($_POST['reserver']))
 }
 }
 ?>
+

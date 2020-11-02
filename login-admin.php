@@ -19,9 +19,12 @@ if(isset($_POST['submit'])){
  $query = mysqli_query($conn, "SELECT * FROM admin WHERE mot_passe='$mot_passe' AND email='$email'");
  
  $rows = mysqli_num_rows($query);
+
+$row = $query -> fetch_assoc();
  if($rows >0 ){
  $_SESSION['logout'] = time();
  $_SESSION['admin']=$_POST['email'];
+ $_SESSION['accept']=$row["val"];
  header("Location: page-admin.php"); 
  }
  else
@@ -106,29 +109,29 @@ if (isset($_SESSION['admin'])) {
                   </div>
           
                   <div id="navbar" class="navbar-collapse collapse">
-                  <a class="navbar-brand" href="index.php"><img src="images/logo-2.png" alt="image"></a>
+              <a class="navbar-brand" href="index.php"><img style="height: 30px;" src="images/logo-finalle.png" alt="image"></a>
                      <ul class="nav navbar-nav">
                      
-                        <li><a style="font-size: 20px;font-family: Arial"  class="active"  href="index.php">Accueil</a></li>
+                        <li><a style="font-size: 20px;font-family: Poppins"  class="active"  href="index.php">Accueil</a></li>
                        
-                        <li><a style="font-size: 20px;font-family: Arial" data-scroll href="">Services</a></li>
-                        <li><a style="font-size: 20px;font-family: Arial"  dstyle="font-size: 20px;font-family: Arial"ata-scroll href="contact.php" target="_blanck">Contact</a></li>
-                        <li><a style="font-size: 20px;font-family: Arial"data-scroll href="signup1.php">Rendez-Vous</a></li>
+                        <li><a style="font-size: 20px;font-family: Poppins" data-scroll href="">Services</a></li>
+                        <li><a style="font-size: 20px;font-family: Poppins"  dstyle="font-size: 20px;font-family: Poppins"ata-scroll href="contact.php" target="_blanck">Contact</a></li>
+                        <li><a style="font-size: 20px;font-family: Poppins"data-scroll href="signup1.php">Rendez-Vous</a></li>
                         <li> <?php if (!isset($_SESSION['nom_patient'])) {
                           
                         ?>
-                          <a onclick="myFunction()" onmouseover="myFunction()" class="dropbtn" style="font-size: 20px;font-family: Arial"  data-scroll >Connexion </a>
+                          <a onclick="myFunction()" onmouseover="myFunction()" class="dropbtn" style="font-size: 20px;font-family: Poppins"  data-scroll >Connexion </a>
               <div class="dropdown">
                 
                 <div  id="myDropdown" class="dropdown-content">
-                  <a  href="signup2.php" target="_blanck" style="font-size: 20px;font-family: Arial" data-scroll>Connectez </a>
-                  <a data-scroll href="creez un compte.php " style="font-size: 20px;font-family: Arial">Inscription</a>
+                  <a  href="signup2.php" target="_blanck" style="font-size: 20px;font-family: Poppins" data-scroll>Connectez </a>
+                  <a data-scroll href="creez un compte.php " style="font-size: 20px;font-family: Poppins">Inscription</a>
                 </div>
               </div>
             </li> <?php 
             }else{
-              echo "<li><a style='font-size: 20px;font-family: Arial'data-scroll href='mon-comptte.php'>Mon compte</a></li>";
-              echo "<li><a style='font-size: 20px;font-family: Arial'data-scroll href='logout.php'>Logout</a></li>";
+              echo "<li><a style='font-size: 20px;font-family: Poppins'data-scroll href='mon-comptte.php'>Mon compte</a></li>";
+              echo "<li><a style='font-size: 20px;font-family: Poppins'data-scroll href='logout.php'>Logout</a></li>";
             }
              ?>
             
@@ -154,7 +157,7 @@ if (isset($_SESSION['admin'])) {
 				</div>
 					 
 				<form class="login100-form validate-form" action="" method="POST" onsubmit="return verifForm(this)" >
-					<span class="login100-form-title" style="font-size: 20px;font-family: Arial"  >
+					<span class="login100-form-title" style="font-size: 20px;font-family: Poppins"  >
 						ADMIN
 					</span>
 
@@ -174,8 +177,8 @@ if (isset($_SESSION['admin'])) {
 						</span>
 					</div>
 					<input type="checkbox" name="remember"> Remember Me
-					<button style="font-size: 20px;font-family: Arial" name="submit"  class="login100-form-btn">
-							Login
+					<button style="font-size: 20px;font-family: Poppins" name="submit"  class="login100-form-btn">
+							Se connecter
 						</button>
 					<div class="text-center p-t-136">
 						
